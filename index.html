@@ -6,17 +6,17 @@
   <meta name="description" content="RoboClock: a unified benchmark for time-aware robotic intelligence. Explore 60 manipulation tasks across five domains and three types of temporal constraints.">
   <meta name="theme-color" content="#E94F19">
   <title>RoboClock · Time-Aware Robotic Intelligence</title>
-  <link rel="icon" href="assets/roboclock-icon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css">
-  <script src="site-config.js" defer></script>
-  <script src="content.js" defer></script>
-  <script src="app.js" defer></script>
+  <link rel="icon" href="assets/branding/roboclock-icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="assets/js/site-config.js" defer></script>
+  <script src="data/content.js" defer></script>
+  <script src="assets/js/app.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="header">
     <nav class="nav wrap" aria-label="Main navigation">
-      <a href="#" class="brand" aria-label="RoboClock home"><img class="brand-wordmark" src="assets/roboclock-logo.svg" alt="RoboClock" width="170" height="35"></a>
+      <a href="#" class="brand" aria-label="RoboClock home"><img class="brand-wordmark" src="assets/branding/roboclock-logo.svg" alt="RoboClock" width="170" height="35"></a>
       <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Open navigation"><span></span><span></span></button>
       <div id="nav-links" class="nav-links"><a href="#gallery">Gallery</a><a href="#benchmark">Benchmark</a><a href="#tasks">Tasks</a><a href="#evaluation">Evaluation</a><a href="#results">Results</a><a href="#resources">Resources</a></div>
     </nav>
@@ -24,7 +24,7 @@
   <main id="main">
     <section class="hero wrap" aria-labelledby="hero-title">
       <p class="eyebrow"><span class="clock-tick" aria-hidden="true"></span> TIME-AWARE ROBOTIC INTELLIGENCE</p>
-      <h1 id="hero-title"><img class="hero-wordmark" src="assets/roboclock-logo.svg" alt="RoboClock" width="1370" height="280" fetchpriority="high"></h1>
+      <h1 id="hero-title"><img class="hero-wordmark" src="assets/branding/roboclock-logo.svg" alt="RoboClock" width="1370" height="280" fetchpriority="high"></h1>
       <p class="hero-title">The right action.<br class="mobile-break"> At the right time.</p>
       <p class="hero-description">A unified benchmark for robots that must act within a window,<br class="desktop-break"> react to an event, or keep up with demand.</p>
       <div class="hero-actions"><a class="button primary" href="#tasks">Explore the tasks</a><a class="button secondary" href="#evaluation">How it works</a></div>
@@ -38,7 +38,7 @@
       <div class="spotlight-toggle"><button id="spotlight-toggle" class="button secondary" aria-expanded="false" aria-controls="featured-scene">Watch a featured task</button></div>
       <div id="featured-scene" hidden>
       <div class="showcase">
-        <div class="showcase-media"><img id="hero-image" src="assets/hero-industry.webp" alt="Dual robotic arms in an industrial motor-test station" width="1280" height="800" fetchpriority="high"><video id="hero-video" muted loop playsinline preload="metadata" poster="assets/hero-industry.webp" aria-label="Motor emergency-stop simulation"></video></div>
+        <div class="showcase-media"><img id="hero-image" src="assets/images/featured/hero-industry.webp" alt="Dual robotic arms in an industrial motor-test station" width="1280" height="800" fetchpriority="high"><video id="hero-video" muted loop playsinline preload="metadata" poster="assets/images/featured/hero-industry.webp" aria-label="Motor emergency-stop simulation"></video></div>
         <div class="showcase-shade"></div>
         <div class="showcase-top"><span class="media-tag">ISAAC SIM · DUAL ARX X5</span><span class="media-tag" id="hero-category">EVENT-REACTIVE</span></div>
         <div class="showcase-caption"><div><p class="showcase-kicker" id="hero-domain">INDUSTRY</p><h2 id="hero-task">A warning. A deadline. A response.</h2><p id="hero-detail">Detect the motor fault and press the emergency stop in time.</p></div><button id="video-toggle" class="video-control" aria-label="Play simulation video"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="m9 5 10 7-10 7z" fill="currentColor"/></svg><span>Play demo</span></button></div>
@@ -51,9 +51,9 @@
     <section id="benchmark" class="section benchmark">
       <div class="wrap"><div class="section-heading"><p class="eyebrow">THE BENCHMARK</p><h2>Success has a time dimension.</h2><p>A physically correct action can still fail. RoboClock makes timing part of the task, across everyday workflows and specialized manipulation.</p></div>
       <div class="constraint-grid">
-        <article class="constraint-card cat-a"><div class="card-image"><img src="assets/household-a3-3.webp" loading="lazy" alt="A robot flipping a pancake in a kitchen"><span class="category-tag">A · Temporal Window</span></div><div class="card-body"><h3>When to act?</h3><p>Act during the valid interval. Too early can be just as wrong as too late.</p><div class="mini-timeline window-diagram" aria-label="Act inside the valid window"><span class="time-track"></span><span class="valid-window"></span><span class="time-needle"></span><span class="time-label left">early</span><span class="time-label center">valid window</span><span class="time-label right">late</span></div><p class="example-label">PANCAKE FLIP</p><p class="example-copy">Wait until the underside is golden, then flip it in time.</p><button class="text-button" data-task="household-A3">View this task</button></div></article>
-        <article class="constraint-card cat-b"><div class="card-image"><img src="assets/industry-b2-3.webp" loading="lazy" alt="Industrial motor test station with a fault warning"><span class="category-tag">B · Event-Reactive</span></div><div class="card-body"><h3>How fast to react?</h3><p>Notice an external event and respond before its deadline.</p><div class="mini-timeline response-diagram" aria-label="Respond within the deadline after an event"><span class="time-track"></span><span class="response-window"></span><span class="event-pin"></span><span class="response-pin"></span><span class="time-label left">event</span><span class="time-label center">response limit</span><span class="time-label right">deadline</span></div><p class="example-label">MOTOR EMERGENCY STOP</p><p class="example-copy">Press the stop button after the fault warning appears.</p><button class="text-button" data-task="industry-B2">View this task</button></div></article>
-        <article class="constraint-card cat-c"><div class="card-image"><img src="assets/sports-c3-4.webp" loading="lazy" alt="Robotic arms restocking a ball service machine"><span class="category-tag">C · Throughput</span></div><div class="card-body"><h3>At what rate?</h3><p>Complete enough correct units to keep pace with demand.</p><div class="mini-timeline throughput-diagram" aria-label="Complete units at the required rate"><span class="time-track"></span><i></i><i></i><i></i><i></i><i></i><span class="time-label left">start</span><span class="time-label center">sustained service</span><span class="time-label right">time budget</span></div><p class="example-label">BALL-MACHINE SERVICE</p><p class="example-copy">Keep the feeder stocked for repeated scheduled demand.</p><button class="text-button" data-task="sports-C3">View this task</button></div></article>
+        <article class="constraint-card cat-a"><div class="card-image"><img src="assets/images/sequences/household-a3/household-a3-3.webp" loading="lazy" alt="A robot flipping a pancake in a kitchen"><span class="category-tag">A · Temporal Window</span></div><div class="card-body"><h3>When to act?</h3><p>Act during the valid interval. Too early can be just as wrong as too late.</p><div class="mini-timeline window-diagram" aria-label="Act inside the valid window"><span class="time-track"></span><span class="valid-window"></span><span class="time-needle"></span><span class="time-label left">early</span><span class="time-label center">valid window</span><span class="time-label right">late</span></div><p class="example-label">PANCAKE FLIP</p><p class="example-copy">Wait until the underside is golden, then flip it in time.</p><button class="text-button" data-task="household-A3">View this task</button></div></article>
+        <article class="constraint-card cat-b"><div class="card-image"><img src="assets/images/sequences/industry-b2/industry-b2-3.webp" loading="lazy" alt="Industrial motor test station with a fault warning"><span class="category-tag">B · Event-Reactive</span></div><div class="card-body"><h3>How fast to react?</h3><p>Notice an external event and respond before its deadline.</p><div class="mini-timeline response-diagram" aria-label="Respond within the deadline after an event"><span class="time-track"></span><span class="response-window"></span><span class="event-pin"></span><span class="response-pin"></span><span class="time-label left">event</span><span class="time-label center">response limit</span><span class="time-label right">deadline</span></div><p class="example-label">MOTOR EMERGENCY STOP</p><p class="example-copy">Press the stop button after the fault warning appears.</p><button class="text-button" data-task="industry-B2">View this task</button></div></article>
+        <article class="constraint-card cat-c"><div class="card-image"><img src="assets/images/sequences/sports-c3/sports-c3-4.webp" loading="lazy" alt="Robotic arms restocking a ball service machine"><span class="category-tag">C · Throughput</span></div><div class="card-body"><h3>At what rate?</h3><p>Complete enough correct units to keep pace with demand.</p><div class="mini-timeline throughput-diagram" aria-label="Complete units at the required rate"><span class="time-track"></span><i></i><i></i><i></i><i></i><i></i><span class="time-label left">start</span><span class="time-label center">sustained service</span><span class="time-label right">time budget</span></div><p class="example-label">BALL-MACHINE SERVICE</p><p class="example-copy">Keep the feeder stocked for repeated scheduled demand.</p><button class="text-button" data-task="sports-C3">View this task</button></div></article>
       </div></div>
     </section>
 
@@ -79,7 +79,7 @@
     <section id="resources" class="resources-section"><div class="wrap resources-inner"><div><p class="eyebrow">ROBOCLOCK</p><h2>Build robots that<br>can keep up.</h2><p>A benchmark for studying physical competence, temporal reasoning, and execution latency together.</p></div><div class="resource-actions"><a class="button primary" href="#tasks">Explore all 60 tasks</a><a id="paper-link" class="button secondary" hidden>Read the paper</a><a id="code-link" class="button secondary" hidden>Get the code</a></div></div></section>
     <section id="citation-section" class="wrap citation-section" hidden><h2>Citation</h2><pre id="citation"></pre><button id="copy-citation" class="button secondary">Copy BibTeX</button><span id="copy-status" role="status"></span></section>
   </main>
-  <footer class="footer wrap"><a class="brand" href="#" aria-label="RoboClock home"><img class="brand-wordmark" src="assets/roboclock-logo.svg" alt="RoboClock" width="150" height="31"></a><p>A Unified Benchmark for Time-Aware Robotic Intelligence</p><a href="#main">Back to top</a></footer>
+  <footer class="footer wrap"><a class="brand" href="#" aria-label="RoboClock home"><img class="brand-wordmark" src="assets/branding/roboclock-logo.svg" alt="RoboClock" width="150" height="31"></a><p>A Unified Benchmark for Time-Aware Robotic Intelligence</p><a href="#main">Back to top</a></footer>
   <dialog id="task-dialog" aria-labelledby="dialog-title"><div class="dialog-content"><button class="dialog-close" aria-label="Close task details">×</button><p id="dialog-eyebrow" class="eyebrow"></p><h2 id="dialog-title"></h2><p id="dialog-goal"></p><div id="dialog-media"></div><div class="dialog-constraint"><span id="dialog-category" class="category-tag"></span><p id="dialog-temporal"></p></div></div></dialog>
 </body>
 </html>

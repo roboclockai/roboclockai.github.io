@@ -50,13 +50,13 @@ window.ROBOCLOCK_DATA = {
       "recordingAlias": null,
       "sourceLine": 20,
       "sequence": [
-        "assets/laboratory-a5-1.webp",
-        "assets/laboratory-a5-2.webp",
-        "assets/laboratory-a5-3.webp",
-        "assets/laboratory-a5-4.webp",
-        "assets/laboratory-a5-5.webp"
+        "assets/images/sequences/laboratory-a5/laboratory-a5-1.webp",
+        "assets/images/sequences/laboratory-a5/laboratory-a5-2.webp",
+        "assets/images/sequences/laboratory-a5/laboratory-a5-3.webp",
+        "assets/images/sequences/laboratory-a5/laboratory-a5-4.webp",
+        "assets/images/sequences/laboratory-a5/laboratory-a5-5.webp"
       ],
-      "thumbnail": "assets/task-laboratory-a5.webp"
+      "thumbnail": "assets/images/thumbnails/laboratory/task-laboratory-a5.webp"
     },
     {
       "id": "laboratory-A6",
@@ -117,7 +117,7 @@ window.ROBOCLOCK_DATA = {
       "description": "Close the released freezer door after its alarm and before the response deadline.",
       "recordingAlias": null,
       "sourceLine": 26,
-      "thumbnail": "assets/task-laboratory-b5.webp"
+      "thumbnail": "assets/images/thumbnails/laboratory/task-laboratory-b5.webp"
     },
     {
       "id": "laboratory-B6",
@@ -159,13 +159,13 @@ window.ROBOCLOCK_DATA = {
       "recordingAlias": null,
       "sourceLine": 30,
       "sequence": [
-        "assets/laboratory-c2-1.webp",
-        "assets/laboratory-c2-2.webp",
-        "assets/laboratory-c2-3.webp",
-        "assets/laboratory-c2-4.webp",
-        "assets/laboratory-c2-5.webp"
+        "assets/images/sequences/laboratory-c2/laboratory-c2-1.webp",
+        "assets/images/sequences/laboratory-c2/laboratory-c2-2.webp",
+        "assets/images/sequences/laboratory-c2/laboratory-c2-3.webp",
+        "assets/images/sequences/laboratory-c2/laboratory-c2-4.webp",
+        "assets/images/sequences/laboratory-c2/laboratory-c2-5.webp"
       ],
-      "thumbnail": "assets/task-laboratory-c2.webp"
+      "thumbnail": "assets/images/thumbnails/laboratory/task-laboratory-c2.webp"
     },
     {
       "id": "laboratory-C3",
@@ -196,7 +196,7 @@ window.ROBOCLOCK_DATA = {
       "description": "Switch the selector after the first bag runs empty but before its drip chamber runs dry.",
       "recordingAlias": null,
       "sourceLine": 37,
-      "thumbnail": "assets/task-healthcare-a2.webp"
+      "thumbnail": "assets/images/thumbnails/healthcare/task-healthcare-a2.webp"
     },
     {
       "id": "healthcare-A3",
@@ -258,13 +258,13 @@ window.ROBOCLOCK_DATA = {
       "recordingAlias": null,
       "sourceLine": 43,
       "sequence": [
-        "assets/healthcare-b5-1.webp",
-        "assets/healthcare-b5-2.webp",
-        "assets/healthcare-b5-3.webp",
-        "assets/healthcare-b5-4.webp",
-        "assets/healthcare-b5-5.webp"
+        "assets/images/sequences/healthcare-b5/healthcare-b5-1.webp",
+        "assets/images/sequences/healthcare-b5/healthcare-b5-2.webp",
+        "assets/images/sequences/healthcare-b5/healthcare-b5-3.webp",
+        "assets/images/sequences/healthcare-b5/healthcare-b5-4.webp",
+        "assets/images/sequences/healthcare-b5/healthcare-b5-5.webp"
       ],
-      "thumbnail": "assets/task-healthcare-b5.webp"
+      "thumbnail": "assets/images/thumbnails/healthcare/task-healthcare-b5.webp"
     },
     {
       "id": "healthcare-B6",
@@ -315,7 +315,7 @@ window.ROBOCLOCK_DATA = {
       "description": "Restock upright vials in the matching drawer lanes within the shift and accuracy limits.",
       "recordingAlias": null,
       "sourceLine": 48,
-      "thumbnail": "assets/task-healthcare-c3.webp"
+      "thumbnail": "assets/images/thumbnails/healthcare/task-healthcare-c3.webp"
     },
     {
       "id": "healthcare-C4",
@@ -346,7 +346,7 @@ window.ROBOCLOCK_DATA = {
       "description": "Hold the glass under the dispenser and release the paddle when the ice reaches the target band.",
       "recordingAlias": null,
       "sourceLine": 69,
-      "thumbnail": "assets/task-household-a2.webp"
+      "thumbnail": "assets/images/thumbnails/household/task-household-a2.webp"
     },
     {
       "id": "household-A3",
@@ -358,13 +358,13 @@ window.ROBOCLOCK_DATA = {
       "recordingAlias": null,
       "sourceLine": 70,
       "sequence": [
-        "assets/household-a3-1.webp",
-        "assets/household-a3-2.webp",
-        "assets/household-a3-3.webp",
-        "assets/household-a3-4.webp",
-        "assets/household-a3-5.webp"
+        "assets/images/sequences/household-a3/household-a3-1.webp",
+        "assets/images/sequences/household-a3/household-a3-2.webp",
+        "assets/images/sequences/household-a3/household-a3-3.webp",
+        "assets/images/sequences/household-a3/household-a3-4.webp",
+        "assets/images/sequences/household-a3/household-a3-5.webp"
       ],
-      "thumbnail": "assets/task-household-a3.webp"
+      "thumbnail": "assets/images/thumbnails/household/task-household-a3.webp"
     },
     {
       "id": "household-A4",
@@ -405,7 +405,7 @@ window.ROBOCLOCK_DATA = {
       "description": "Turn off the burner after the pot catches fire.",
       "recordingAlias": null,
       "sourceLine": 74,
-      "thumbnail": "assets/task-household-b3.webp"
+      "thumbnail": "assets/images/thumbnails/household/task-household-b3.webp"
     },
     {
       "id": "household-C1",
@@ -446,7 +446,7 @@ window.ROBOCLOCK_DATA = {
       "description": "After the opponent presses the clock, execute the scheduled move and press the clock in time.",
       "recordingAlias": null,
       "sourceLine": 82,
-      "thumbnail": "assets/task-sports-a1.webp"
+      "thumbnail": "assets/images/thumbnails/sports/task-sports-a1.webp"
     },
     {
       "id": "sports-A2",
@@ -517,7 +517,7 @@ window.ROBOCLOCK_DATA = {
       "description": "Place the required balls into the rack as quickly as possible, with stable released placements.",
       "recordingAlias": null,
       "sourceLine": 89,
-      "thumbnail": "assets/task-sports-c1.webp"
+      "thumbnail": "assets/images/thumbnails/sports/task-sports-c1.webp"
     },
     {
       "id": "sports-C2",
@@ -539,13 +539,13 @@ window.ROBOCLOCK_DATA = {
       "recordingAlias": null,
       "sourceLine": 91,
       "sequence": [
-        "assets/sports-c3-1.webp",
-        "assets/sports-c3-2.webp",
-        "assets/sports-c3-3.webp",
-        "assets/sports-c3-4.webp",
-        "assets/sports-c3-5.webp"
+        "assets/images/sequences/sports-c3/sports-c3-1.webp",
+        "assets/images/sequences/sports-c3/sports-c3-2.webp",
+        "assets/images/sequences/sports-c3/sports-c3-3.webp",
+        "assets/images/sequences/sports-c3/sports-c3-4.webp",
+        "assets/images/sequences/sports-c3/sports-c3-5.webp"
       ],
-      "thumbnail": "assets/task-sports-c3.webp"
+      "thumbnail": "assets/images/thumbnails/sports/task-sports-c3.webp"
     },
     {
       "id": "industry-A1",
@@ -556,7 +556,7 @@ window.ROBOCLOCK_DATA = {
       "description": "End the whole-part zincate dip within the recipe window, then release the part in the rinse bath.",
       "recordingAlias": 41,
       "sourceLine": 96,
-      "thumbnail": "assets/task-industry-a1.webp"
+      "thumbnail": "assets/images/thumbnails/industry/task-industry-a1.webp"
     },
     {
       "id": "industry-A2",
@@ -567,7 +567,7 @@ window.ROBOCLOCK_DATA = {
       "description": "Release the pump housing upright in the designated carrier while it crosses the loading sector.",
       "recordingAlias": 42,
       "sourceLine": 97,
-      "thumbnail": "assets/task-industry-a2.webp"
+      "thumbnail": "assets/images/thumbnails/industry/task-industry-a2.webp"
     },
     {
       "id": "industry-A3",
@@ -578,7 +578,7 @@ window.ROBOCLOCK_DATA = {
       "description": "Seat the housing cover within the allowed interval after adhesive application.",
       "recordingAlias": 43,
       "sourceLine": 98,
-      "thumbnail": "assets/task-industry-a3.webp"
+      "thumbnail": "assets/images/thumbnails/industry/task-industry-a3.webp"
     },
     {
       "id": "industry-B1",
@@ -589,7 +589,7 @@ window.ROBOCLOCK_DATA = {
       "description": "Fully close the isolation valve within the response limit after the pipe starts leaking.",
       "recordingAlias": 44,
       "sourceLine": 99,
-      "thumbnail": "assets/task-industry-b1.webp"
+      "thumbnail": "assets/images/thumbnails/industry/task-industry-b1.webp"
     },
     {
       "id": "industry-B2",
@@ -601,14 +601,14 @@ window.ROBOCLOCK_DATA = {
       "recordingAlias": 45,
       "sourceLine": 100,
       "sequence": [
-        "assets/industry-b2-1.webp",
-        "assets/industry-b2-2.webp",
-        "assets/industry-b2-3.webp",
-        "assets/industry-b2-4.webp",
-        "assets/industry-b2-5.webp"
+        "assets/images/sequences/industry-b2/industry-b2-1.webp",
+        "assets/images/sequences/industry-b2/industry-b2-2.webp",
+        "assets/images/sequences/industry-b2/industry-b2-3.webp",
+        "assets/images/sequences/industry-b2/industry-b2-4.webp",
+        "assets/images/sequences/industry-b2/industry-b2-5.webp"
       ],
-      "video": "assets/industry-motor-stop.mp4",
-      "thumbnail": "assets/task-industry-b2.webp"
+      "video": "assets/videos/industry/industry-motor-stop.mp4",
+      "thumbnail": "assets/images/thumbnails/industry/task-industry-b2.webp"
     },
     {
       "id": "industry-B3",
@@ -619,7 +619,7 @@ window.ROBOCLOCK_DATA = {
       "description": "Stop the rolling bearing inside the safety area after zone entry, then recover it to the tray.",
       "recordingAlias": 46,
       "sourceLine": 101,
-      "thumbnail": "assets/task-industry-b3.webp"
+      "thumbnail": "assets/images/thumbnails/industry/task-industry-b3.webp"
     },
     {
       "id": "industry-C1",
@@ -630,7 +630,7 @@ window.ROBOCLOCK_DATA = {
       "description": "Pack a bearing, bracket and pin into each case, release all items and move completed kits to output.",
       "recordingAlias": 47,
       "sourceLine": 102,
-      "thumbnail": "assets/task-industry-c1.webp"
+      "thumbnail": "assets/images/thumbnails/industry/task-industry-c1.webp"
     },
     {
       "id": "industry-C2",
@@ -641,7 +641,7 @@ window.ROBOCLOCK_DATA = {
       "description": "Match carton SKUs to shelf identities, release cartons upright and withdraw before counting them.",
       "recordingAlias": 48,
       "sourceLine": 103,
-      "thumbnail": "assets/task-industry-c2.webp"
+      "thumbnail": "assets/images/thumbnails/industry/task-industry-c2.webp"
     },
     {
       "id": "industry-C3",
@@ -652,7 +652,7 @@ window.ROBOCLOCK_DATA = {
       "description": "Present all three required faces, then sort each part by its QC result into the shared PASS/REJECT trays.",
       "recordingAlias": 49,
       "sourceLine": 104,
-      "thumbnail": "assets/task-industry-c3.webp"
+      "thumbnail": "assets/images/thumbnails/industry/task-industry-c3.webp"
     },
     {
       "id": "industry-C4",
@@ -663,7 +663,7 @@ window.ROBOCLOCK_DATA = {
       "description": "Place the four colors in their designated case positions, then move the completed palette to output.",
       "recordingAlias": 50,
       "sourceLine": 105,
-      "thumbnail": "assets/task-industry-c4.webp"
+      "thumbnail": "assets/images/thumbnails/industry/task-industry-c4.webp"
     }
   ],
   "results": [

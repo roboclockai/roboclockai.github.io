@@ -100,11 +100,11 @@
   }));
 
   const heroScenes = {
-    industry: { image: 'assets/hero-industry.webp', task: 'A warning. A deadline. A response.', detail: 'Detect the motor fault and press the emergency stop in time.', category: 'EVENT-REACTIVE', alt: 'Dual robotic arms in an industrial motor-test station', video: 'assets/industry-motor-stop.mp4' },
-    laboratory: { image: 'assets/hero-laboratory.webp', task: 'Precision, at the required pace.', detail: 'Place samples in matching rack slots while meeting the service target.', category: 'THROUGHPUT', alt: 'Dual robotic arms placing laboratory samples in a rack' },
-    healthcare: { image: 'assets/hero-healthcare.webp', task: 'Respond when care is needed.', detail: 'Hang the prepared bag, then open the line clamp before the deadline.', category: 'EVENT-REACTIVE', alt: 'Robotic arms handling a prepared infusion bag in a simulated healthcare scene' },
-    household: { image: 'assets/hero-household.webp', task: 'A little early. A little too late.', detail: 'Flip the pancake when its underside reaches the right cooking state.', category: 'TEMPORAL WINDOW', alt: 'Robotic manipulation of a pancake in a kitchen pan' },
-    sports: { image: 'assets/hero-sports.webp', task: 'Keep the next ball ready.', detail: 'Restock a ball feeder to keep up with repeated scheduled demand.', category: 'THROUGHPUT', alt: 'Dual robotic arms restocking a ball-machine service station' },
+    industry: { image: 'assets/images/featured/hero-industry.webp', task: 'A warning. A deadline. A response.', detail: 'Detect the motor fault and press the emergency stop in time.', category: 'EVENT-REACTIVE', alt: 'Dual robotic arms in an industrial motor-test station', video: 'assets/videos/industry/industry-motor-stop.mp4' },
+    laboratory: { image: 'assets/images/featured/hero-laboratory.webp', task: 'Precision, at the required pace.', detail: 'Place samples in matching rack slots while meeting the service target.', category: 'THROUGHPUT', alt: 'Dual robotic arms placing laboratory samples in a rack' },
+    healthcare: { image: 'assets/images/featured/hero-healthcare.webp', task: 'Respond when care is needed.', detail: 'Hang the prepared bag, then open the line clamp before the deadline.', category: 'EVENT-REACTIVE', alt: 'Robotic arms handling a prepared infusion bag in a simulated healthcare scene' },
+    household: { image: 'assets/images/featured/hero-household.webp', task: 'A little early. A little too late.', detail: 'Flip the pancake when its underside reaches the right cooking state.', category: 'TEMPORAL WINDOW', alt: 'Robotic manipulation of a pancake in a kitchen pan' },
+    sports: { image: 'assets/images/featured/hero-sports.webp', task: 'Keep the next ball ready.', detail: 'Restock a ball feeder to keep up with repeated scheduled demand.', category: 'THROUGHPUT', alt: 'Dual robotic arms restocking a ball-machine service station' },
   };
   let currentScene = 'industry';
   const heroVideo = $('#hero-video');

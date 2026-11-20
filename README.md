@@ -12,16 +12,44 @@ python3 -m http.server 8000 --bind 127.0.0.1
 
 Then visit `http://127.0.0.1:8000/`.
 
+## Directory layout
+
+```text
+.
+├── index.html                  # Website entry, page layout and copy
+├── README.md                   # Preview and editing guide
+├── .nojekyll                   # Plain static GitHub Pages site
+├── data/
+│   └── content.js              # Task catalog, media references and results
+└── assets/
+    ├── css/
+    │   └── styles.css          # Layout, typography and colors
+    ├── js/
+    │   ├── app.js              # Gallery, filters, dialogs and interactions
+    │   └── site-config.js      # Authors, affiliations and resource links
+    ├── branding/               # Official logo and favicon
+    ├── images/
+    │   ├── featured/           # Large featured-scene images
+    │   ├── thumbnails/         # Gallery thumbnails grouped by domain
+    │   ├── sequences/          # Chronological frames grouped by task
+    │   └── domain-galleries/   # Existing paper domain-summary images
+    └── videos/
+        └── industry/          # Playable Industry demo
+```
+
 ## Edit
 
-- `index.html`: page structure and copy.
-- `styles.css`: responsive layout, paper-aligned colors and gallery presentation.
-- `app.js`: gallery, task filters/dialogs, video controls and interactive illustrations.
-- `site-config.js`: authors, affiliations and resource links.
-- `content.js`: task catalog, thumbnail/sequence references and selected reported results.
-- `assets/`: supplied RoboClock logo and existing task imagery/video.
+| Change | File or folder |
+| --- | --- |
+| Page text and section layout | `index.html` |
+| Colors, spacing and responsive layout | `assets/css/styles.css` |
+| Authors and future paper/code links | `assets/js/site-config.js` |
+| Task descriptions, result rows and media references | `data/content.js` |
+| Gallery, search, task dialogs and controls | `assets/js/app.js` |
+| Official branding | `assets/branding/` |
+| Task thumbnails, frame sequences and videos | The matching media subfolder under `assets/` |
 
-No build tools, package installation, external fonts or backend are required. Keep the relative paths intact when moving files.
+No build tools, package installation, external fonts or backend are required. Media paths in HTML and JavaScript are relative to `index.html`, including paths declared inside `data/content.js`. When adding or moving media, update its references as well. Keep all folders together for local preview.
 
 ## Current media
 
