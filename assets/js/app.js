@@ -99,13 +99,12 @@
     menu.setAttribute('aria-expanded', 'false'); $('#nav-links').classList.remove('open');
   }));
 
-  const heroScenes = {
-    industry: { image: 'assets/images/featured/hero-industry.webp', task: 'A warning. A deadline. A response.', detail: 'Detect the motor fault and press the emergency stop in time.', category: 'EVENT-REACTIVE', alt: 'Dual robotic arms in an industrial motor-test station', video: 'assets/videos/industry/industry-motor-stop.mp4' },
-    laboratory: { image: 'assets/images/featured/hero-laboratory.webp', task: 'Precision, at the required pace.', detail: 'Place samples in matching rack slots while meeting the service target.', category: 'THROUGHPUT', alt: 'Dual robotic arms placing laboratory samples in a rack' },
-    healthcare: { image: 'assets/images/featured/hero-healthcare.webp', task: 'Respond when care is needed.', detail: 'Hang the prepared bag, then open the line clamp before the deadline.', category: 'EVENT-REACTIVE', alt: 'Robotic arms handling a prepared infusion bag in a simulated healthcare scene' },
-    household: { image: 'assets/images/featured/hero-household.webp', task: 'A little early. A little too late.', detail: 'Flip the pancake when its underside reaches the right cooking state.', category: 'TEMPORAL WINDOW', alt: 'Robotic manipulation of a pancake in a kitchen pan' },
-    sports: { image: 'assets/images/featured/hero-sports.webp', task: 'Keep the next ball ready.', detail: 'Restock a ball feeder to keep up with repeated scheduled demand.', category: 'THROUGHPUT', alt: 'Dual robotic arms restocking a ball-machine service station' },
-  };
+  const heroScenes = Object.fromEntries(Object.entries(data.featuredTaskIds).map(([domain,id]) => {
+    const task=data.tasks.find(t=>t.id===id);
+    return [domain,{image:`assets/images/featured/hero-${domain}.webp`,task:task.name,
+      detail:task.description,category:categoryNames[task.category].toUpperCase(),
+      alt:`${task.name}, ${domainName(domain)}`,video:task.video}];
+  }));
   let currentScene = 'industry';
   const heroVideo = $('#hero-video');
   const videoButton = $('#video-toggle');
@@ -152,13 +151,22 @@
     const host = $('#dialog-media'); host.replaceChildren();
     if (task.video) {
       const video = el('video'); video.src = task.video; video.controls = true; video.playsInline = true; video.preload = 'metadata';
-      if (task.sequence) video.poster = task.sequence[2];
+      if (task.thumbnail) video.poster = task.thumbnail;
+      video.setAttribute('aria-label',task.name+' final oracle demonstration');
       host.append(video);
+      const note=el('p','demo-note',`Final oracle demonstration · ${task.demo.difficulty} · seed ${task.demo.seed}. Head camera above left and right wrist views.`);
+      host.append(note);
+      const instruction=el('details','task-instruction');
+      instruction.append(el('summary',null,'Read the full task instruction'),el('p',null,task.instruction));
+      host.append(instruction);
     }
     if (task.sequence) {
       const sequence = el('div', 'sequence-grid');
-      task.sequence.forEach((src, i) => { const img = el('img'); img.src = src; img.alt = task.name + ', chronological stage ' + (i+1); sequence.append(img); });
-      host.append(sequence, el('p', 'sequence-note', 'Chronological demonstration frames, sampled at unequal intervals.'));
+      task.sequence.forEach((src, i) => {
+        const figure=el('figure');const img=el('img');img.src=src;img.alt=task.name+', chronological head-camera frame '+(i+1);
+        figure.append(img,el('figcaption',null,task.sequenceTimes[i].toFixed(2)+' s'));sequence.append(figure);
+      });
+      host.append(sequence, el('p', 'sequence-note', 'Head-camera frames from this final recording, in playback order.'));
     } else if(task.thumbnail) {
       const image=el('img','task-scene');image.src=task.thumbnail;image.alt=task.name;
       host.append(image);
@@ -171,13 +179,13 @@
   dialog.addEventListener('close', () => { dialog.querySelector('video')?.pause(); });
 
   const state = { domain: 'all', category: 'all', search: '', visible: 12 };
-  const featuredIds = ['household-A3','laboratory-A5','industry-B2','healthcare-B5','laboratory-C2','sports-C3'];
+  const featuredIds = ['household-A2','laboratory-A5','industry-B2','healthcare-A2','laboratory-C2','sports-C3'];
   const taskOrder = featuredIds.map((id) => data.tasks.find((t) => t.id===id));
   const grouped = data.domains.map((d) => data.tasks.filter((t) => t.domain===d.id && !featuredIds.includes(t.id)));
   for (let i=0; i<Math.max(...grouped.map((g)=>g.length)); i++) grouped.forEach((g)=>{if(g[i])taskOrder.push(g[i]);});
   function renderTasks() {
     const search = state.search.trim().toLowerCase();
-    const filtered = taskOrder.filter((task) => (state.domain==='all' || task.domain===state.domain) && (state.category==='all' || task.category===state.category) && (!search || [task.name, task.description, task.code, task.recordingAlias || '', domainName(task.domain)].join(' ').toLowerCase().includes(search)));
+    const filtered = taskOrder.filter((task) => (state.domain==='all' || task.domain===state.domain) && (state.category==='all' || task.category===state.category) && (!search || [task.name, task.description, task.instruction, task.code, task.recordingAlias || '', domainName(task.domain)].join(' ').toLowerCase().includes(search)));
     const grid = $('#task-grid'); grid.replaceChildren();
     filtered.slice(0, state.visible).forEach((task) => {
       const card = el('button', 'task-card'); card.type = 'button'; card.dataset.cat = task.category; card.dataset.task = task.id;
@@ -185,7 +193,8 @@
       const top = el('div', 'task-card-top'); top.append(el('span', 'task-domain', domainName(task.domain)), el('span', 'task-code', task.code));
       const bottom = el('div', 'task-card-bottom'); bottom.append(el('span', 'category-tag', task.category + ' · ' + categoryNames[task.category]));
       if (task.sequence || task.video) bottom.append(el('span', 'has-demo', task.video ? 'Video demo' : 'Frame sequence'));
-      card.append(top, el('h3', null, task.name), el('p', null, task.description), bottom);
+      const preview=el('img','task-preview');preview.src=task.thumbnail;preview.alt=task.name;preview.loading='lazy';preview.width=600;preview.height=400;
+      card.append(preview,top, el('h3', null, task.name), el('p', null, task.description), bottom);
       card.addEventListener('click', () => openTask(task.id)); grid.append(card);
     });
     $('#task-count').textContent = filtered.length + (filtered.length===1 ? ' task' : ' tasks') + (filtered.length>state.visible ? ' · showing ' + state.visible : '');
@@ -206,20 +215,63 @@
     $('#world-delay span').textContent = paused ? 'No time charged' : 'Time advances';
     $('#protocol-description').textContent = paused ? 'Inference time is not charged to the environment clock. The agent can finish thinking before the simulated world advances.' : 'During the charged inference delay, previously committed controls remain in effect. The next action is based on an observation that is already older.';
   }));
-  const metricDescriptions = { psr:'Physical success with timing relaxed and inference paused.', tsr:'Physical success together with temporal compliance, with inference paused.', ltsr:'Latency-aligned temporal success, including model inference and control-interface delay.' };
-  function renderResults(metric) {
-    const chart = $('#results-chart'); chart.replaceChildren();
-    [...data.results].sort((a,b) => b[metric]-a[metric]).forEach((result) => {
-      const row = el('div','chart-row'); const label = el('div','chart-model',result.model); label.append(el('span','family-tag',result.family));
-      const track = el('div','chart-track'); const bar = el('div','chart-bar'); bar.style.width=(result[metric]/15*100)+'%'; track.append(bar);
-      row.append(label,track,el('div','chart-value',result[metric].toFixed(1)+'%')); chart.append(row);
+  // The leaderboard preserves every reported row and missing metric.
+  const board=data.leaderboard;
+  const boardState={comparison:'all',scope:'Overall',sort:'ltsr',search:''};
+  const conditionLabel=(row)=>row.fineTuned?'Fine-tuned':row.condition==='released'?'Released checkpoint':row.family==='Agent framework'?'Qwen3.8-27B backbone':row.family==='Text-only reference'?'Text-only · Tool-augmented EEF':'Tool-augmented EEF';
+  const scoreText=(value)=>value==null?'—':value.toFixed(1);
+  function renderLeaderboard(){
+    const query=boardState.search.trim().toLowerCase();
+    const rows=board.rows.filter(row=>(boardState.comparison==='all'||row.comparison===boardState.comparison)&&
+      (!query||[row.model,row.family,conditionLabel(row)].join(' ').toLowerCase().includes(query)));
+    rows.sort((a,b)=>{
+      const av=a.scores[boardState.scope][boardState.sort],bv=b.scores[boardState.scope][boardState.sort];
+      return (bv??-1)-(av??-1)||a.model.localeCompare(b.model)||Number(b.fineTuned)-Number(a.fineTuned);
     });
-    $('#result-description').textContent=metricDescriptions[metric];
-    $$('[data-metric]').forEach((b) => { const active=b.dataset.metric===metric; b.classList.toggle('active',active); b.setAttribute('aria-pressed',String(active)); });
+    const host=$('#leaderboard-body');host.replaceChildren();let rank=0,previous=null;
+    rows.forEach((row,index)=>{
+      const scores=row.scores[boardState.scope];const value=scores[boardState.sort];
+      if(value!==previous||index===0)rank=index+1;previous=value;
+      const tr=el('tr');tr.dataset.resultId=row.id;
+      if(row.fineTuned)tr.classList.add('fine-tuned-row');
+      tr.append(el('td','rank-cell',value==null?'—':String(rank)));
+      const model=el('th','leaderboard-model');model.scope='row';model.append(el('strong',null,row.model),el('span','family-tag',row.family));
+      const condition=el('td','configuration-cell',conditionLabel(row));
+      condition.append(el('small',null,'Manuscript Table '+row.source.tableNumber));
+      tr.append(model,condition);
+      ['ps','psr','tsr','ltsr'].forEach(metric=>{
+        const cell=el('td','score-cell',scoreText(scores[metric]));cell.dataset.metric=metric;
+        if(metric===boardState.sort)cell.classList.add('selected-score');
+        tr.append(cell);
+      });host.append(tr);
+    });
+    $('#leaderboard-count').textContent=rows.length+(rows.length===1?' configuration':' configurations')+' · '+boardState.scope;
+    $('#leaderboard-empty').hidden=rows.length!==0;
+    $$('[data-comparison]').forEach(button=>{const active=button.dataset.comparison===boardState.comparison;button.classList.toggle('active',active);button.setAttribute('aria-pressed',String(active));});
+    $$('[data-score-heading]').forEach(th=>{if(th.dataset.scoreHeading===boardState.sort)th.setAttribute('aria-sort','descending');else th.removeAttribute('aria-sort');});
+    $$('[data-sort]').forEach(button=>button.classList.toggle('active',button.dataset.sort===boardState.sort));
   }
-  $$('[data-metric]').forEach((b) => b.addEventListener('click',() => renderResults(b.dataset.metric)));
-  renderResults('ltsr');
-  const observed = $$('#gallery,#benchmark,#tasks,#evaluation,#results,#resources');
+  $$('[data-comparison]').forEach(button=>button.addEventListener('click',()=>{boardState.comparison=button.dataset.comparison;renderLeaderboard();}));
+  $$('[data-sort]').forEach(button=>button.addEventListener('click',()=>{boardState.sort=button.dataset.sort;renderLeaderboard();}));
+  $('#leaderboard-scope').addEventListener('change',event=>{boardState.scope=event.target.value;renderLeaderboard();});
+  $('#leaderboard-search').addEventListener('input',event=>{boardState.search=event.target.value;renderLeaderboard();});
+  renderLeaderboard();
+  board.seenUnseenRows.forEach(row=>{
+    const tr=el('tr');if(row.fineTuned)tr.classList.add('fine-tuned-row');
+    const name=el('th','leaderboard-model');name.scope='row';name.append(el('strong',null,row.model),el('span','checkpoint-label',row.fineTuned?'Fine-tuned':'Released checkpoint'));tr.append(name);
+    ['Seen','Unseen'].forEach(scope=>['psr','tsr','ltsr'].forEach(metric=>tr.append(el('td','score-cell',scoreText(row.scores[scope][metric])))));
+    $('#transfer-body').append(tr);
+  });
+  const astra=board.rows.find(row=>row.model==='GPT-6 Astra');
+  const policy=board.rows.find(row=>row.model==='π₀.₅'&&row.fineTuned);
+  const transfer=board.seenUnseenRows.find(row=>row.model==='X-VLA'&&row.fineTuned);
+  const insightScores={
+    'insight-astra-tsr':astra.scores.Overall.tsr,'insight-astra-ltsr':astra.scores.Overall.ltsr,
+    'insight-policy-ltsr':policy.scores.Overall.ltsr,'insight-agent-ltsr':Math.max(...board.rows.filter(row=>row.comparison==='vlm').map(row=>row.scores.Overall.ltsr)),
+    'insight-seen-tsr':transfer.scores.Seen.tsr,'insight-unseen-tsr':transfer.scores.Unseen.tsr,
+  };
+  Object.entries(insightScores).forEach(([id,value])=>$('#'+id).textContent=value.toFixed(1)+'%');
+  const observed = $$('#gallery,#insights,#benchmark,#tasks,#leaderboard,#resources');
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries) => {
       for (const entry of entries) if (entry.isIntersecting) $$('#nav-links a').forEach((a) => a.classList.toggle('current',a.hash==='#'+entry.target.id));
