@@ -71,12 +71,6 @@
     $('#gallery-toggle').setAttribute('aria-pressed',String(paused));
   });
   if(reducedMotion){gallery.classList.add('gallery-paused');$('#gallery-toggle').hidden=true;}
-  $('#spotlight-toggle').addEventListener('click',()=>{
-    const panel=$('#featured-scene');panel.hidden=!panel.hidden;
-    $('#spotlight-toggle').setAttribute('aria-expanded',String(!panel.hidden));
-    $('#spotlight-toggle').textContent=panel.hidden?'Watch a featured task':'Hide featured task';
-    if(panel.hidden){$('#hero-video').pause();setVideoLabel(false);}
-  });
 
   if (config.authors?.length) {
     const container = $('#authors');
@@ -135,47 +129,6 @@
     menu.setAttribute('aria-expanded', 'false'); $('#nav-links').classList.remove('open');
   }));
 
-  const heroScenes = Object.fromEntries(Object.entries(data.featuredTaskIds).map(([domain,id]) => {
-    const task=data.tasks.find(t=>t.id===id);
-    return [domain,{image:`assets/images/featured/hero-${domain}.webp`,task:task.name,
-      detail:task.description,category:categoryNames[task.category].toUpperCase(),
-      alt:`${task.name}, ${domainName(domain)}`,video:task.video}];
-  }));
-  let currentScene = 'industry';
-  const heroVideo = $('#hero-video');
-  const videoButton = $('#video-toggle');
-  const media = $('.showcase-media');
-  const setVideoLabel = (playing) => {
-    videoButton.querySelector('span').textContent = playing ? 'Pause demo' : 'Play demo';
-    videoButton.setAttribute('aria-label', playing ? 'Pause simulation video' : 'Play simulation video');
-    videoButton.querySelector('path').setAttribute('d', playing ? 'M7 5h4v14H7zm7 0h4v14h-4z' : 'm9 5 10 7-10 7z');
-  };
-  function setScene(id) {
-    currentScene = id; const scene = heroScenes[id];
-    heroVideo.pause(); media.classList.remove('playing'); setVideoLabel(false);
-    $('#hero-image').src = scene.image; $('#hero-image').alt = scene.alt;
-    $('#hero-domain').textContent = domainName(id).toUpperCase();
-    $('#hero-task').textContent = scene.task; $('#hero-detail').textContent = scene.detail;
-    $('#hero-category').textContent = scene.category;
-    videoButton.hidden = !scene.video;
-    if (scene.video) { heroVideo.src = scene.video; heroVideo.poster = scene.image; }
-    else { heroVideo.removeAttribute('src'); heroVideo.load(); }
-    $$('[data-hero]').forEach((b) => {
-      const active = b.dataset.hero === id; b.classList.toggle('active', active); b.setAttribute('aria-pressed', String(active));
-    });
-  }
-  $$('[data-hero]').forEach((b) => b.addEventListener('click', () => setScene(b.dataset.hero)));
-  videoButton.addEventListener('click', async () => {
-    if (!heroScenes[currentScene].video) return;
-    if (heroVideo.paused) {
-      try { await heroVideo.play(); media.classList.add('playing'); setVideoLabel(true); }
-      catch { setVideoLabel(false); }
-    } else { heroVideo.pause(); setVideoLabel(false); }
-  });
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) { heroVideo.pause(); setVideoLabel(false); }
-  });
-  setScene('industry');
 
   // Task details live on tasks.html; the homepage only links there.
   const openTask = (id) => { location.href = 'tasks.html?task=' + encodeURIComponent(id); };
