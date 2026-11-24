@@ -271,7 +271,7 @@
     'insight-seen-tsr':transfer.scores.Seen.tsr,'insight-unseen-tsr':transfer.scores.Unseen.tsr,
   };
   Object.entries(insightScores).forEach(([id,value])=>$('#'+id).textContent=value.toFixed(1)+'%');
-  const observed = $$('#gallery,#insights,#benchmark,#tasks,#leaderboard,#resources');
+  const observed = $$('#gallery,#insights,#benchmark,#tasks,#leaderboard,#real-robot,#resources');
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries) => {
       for (const entry of entries) if (entry.isIntersecting) $$('#nav-links a').forEach((a) => a.classList.toggle('current',a.hash==='#'+entry.target.id));

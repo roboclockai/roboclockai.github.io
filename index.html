@@ -11,6 +11,8 @@
   <script src="assets/js/site-config.js" defer></script>
   <script src="data/content.js" defer></script>
   <script src="assets/js/app.js" defer></script>
+  <script src="data/real-robot.js" defer></script>
+  <script src="assets/js/real-robot.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -18,7 +20,7 @@
     <nav class="nav wrap" aria-label="Main navigation">
       <a href="#" class="brand" aria-label="RoboClock home"><img class="brand-wordmark" src="assets/branding/roboclock-logo.svg" alt="RoboClock" width="170" height="35"></a>
       <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Open navigation"><span></span><span></span></button>
-      <div id="nav-links" class="nav-links"><a href="#gallery">Gallery</a><a href="#insights">Insights</a><a href="#tasks">Tasks</a><a href="#leaderboard">Leaderboard</a><a href="#resources">Resources</a></div>
+      <div id="nav-links" class="nav-links"><a href="#gallery">Gallery</a><a href="#insights">Insights</a><a href="#tasks">Tasks</a><a href="#leaderboard">Leaderboard</a><a href="#real-robot">Real Robot</a><a href="#resources">Resources</a></div>
     </nav>
   </header>
   <main id="main">
@@ -96,6 +98,56 @@
         <p class="leaderboard-note">Reported in manuscript Tables 2, 4 and 5. “—” means the metric was not reported. Framework rows share Qwen3.8-27B; foundation-model agents use Tool-augmented EEF. GLM-5.3 is a text-only reference. Rankings describe these configurations; training and interfaces differ across groups.</p>
       </div>
       <details id="transfer-results" class="transfer-results"><summary>Seen versus held-out tasks · all 8 reported checkpoint configurations</summary><p>Fine-tuning uses 45 tasks; 15 tasks are held out. Values reproduce manuscript Table 3.</p><div class="table-scroll" tabindex="0" role="region" aria-label="Seen and held-out comparison"><table class="leaderboard-table transfer-table"><caption class="visually-hidden">Seen versus held-out task scores in percent.</caption><thead><tr><th scope="col">Model / checkpoint</th><th scope="col">Seen PSR</th><th scope="col">Seen TSR</th><th scope="col">Seen LTSR</th><th scope="col">Held-out PSR</th><th scope="col">Held-out TSR</th><th scope="col">Held-out LTSR</th></tr></thead><tbody id="transfer-body"></tbody></table></div></details>
+    </section>
+
+    <section id="real-robot" class="section real-robot-section">
+      <div class="wrap">
+        <div class="section-heading"><p class="eyebrow">REAL-ROBOT PILOT</p><h2>The clock keeps running<br>on a real arm.</h2><p>Six tasks carry the three temporal categories to a UFactory xArm&nbsp;6. Six VLM agents, 10 episodes per task: 360 scored episodes. There is no paused clock on hardware, so every success is latency-aligned.</p></div>
+        <div class="stats real-stats"><div><strong>6</strong><span>Real-world tasks</span></div><div><strong>6</strong><span>VLM agents</span></div><div><strong>360</strong><span>Operator-scored episodes</span></div><div><strong>5.1&nbsp;s</strong><span>Median model reply</span></div></div>
+
+        <div class="real-setup">
+          <article><p class="insight-label">HARDWARE</p><h3>One arm, two cameras</h3><p>A UFactory xArm&nbsp;6 with a soft-finger gripper at a table. A RealSense D435 head camera across the table gives a 640×480 color image; a wrist camera gives an infrared image. Both are calibrated to the arm’s base frame. Unlike the simulated rig: a single arm and no depth image.</p></article>
+          <article><p class="insight-label">AGENT INTERFACE</p><h3>Tool-augmented EEF</h3><p>The single-arm version of the simulated interface: ten tools, one call per turn. A target is a base-frame point or a head-image pixel with a height above the table; tool results are measurements only. The earliest episodes (all of C2, most of A2 and B2) used direct pose commands.</p></article>
+          <article><p class="insight-label">SAFETY &amp; LIMITS</p><h3>Guarded execution</h3><p>The arm side enforces inverse kinematics, joint and workspace limits, a table guard and a watchdog. The tool moves at 30&nbsp;mm/s and an operator holds the emergency stop. An episode ends on <code>finish</code>, at the turn cap or 600&nbsp;s, on a controller error or on operator interruption.</p></article>
+          <article><p class="insight-label">REAL TIME</p><h3>Thinking costs time</h3><p>The world does not wait for the model. The median model reply takes 5.1&nbsp;s, from 3.4&nbsp;s for Qwen3.8&nbsp;27B to 16.8&nbsp;s for DeepSeek&nbsp;V4.1&nbsp;Flash. Time requirements are 4× the human standard time (B2: while the alarm rings).</p></article>
+        </div>
+
+        <h3 class="real-subtitle">Six tasks, three temporal categories</h3>
+        <p class="real-lead">Select <em>Robot view</em> to see the first head-camera image of an episode, as the model receives it.</p>
+        <div id="real-task-grid" class="real-task-grid"></div>
+
+        <h3 class="real-subtitle" id="real-results-title">Results of six VLM agents</h3>
+        <div class="leaderboard-panel real-results-panel">
+          <div class="leaderboard-filters" role="group" aria-label="Real-robot metric"><button data-real-metric="0" aria-pressed="false">PS · progress</button><button data-real-metric="1" aria-pressed="false">PSR · task completed</button><button class="active" data-real-metric="2" aria-pressed="true">LTSR · completed in time</button></div>
+          <div class="table-scroll" tabindex="0" role="region" aria-labelledby="real-results-title"><table class="leaderboard-table real-results-table"><caption class="visually-hidden">Real-robot scores in percent, mean over 10 episodes per model and task.</caption><thead><tr><th scope="col">Model · <span id="real-metric-name">LTSR</span></th><th scope="col">A1</th><th scope="col">A2</th><th scope="col">B1</th><th scope="col">B2</th><th scope="col">C1</th><th scope="col">C2</th><th scope="col">Mean</th></tr></thead><tbody id="real-results-body"></tbody></table></div>
+          <p class="leaderboard-note">Scored by the operator with the step rubric on each task card. PS: mean step score; PSR: episodes that complete the task (%); LTSR: episodes that complete it within the time requirement (%; for A1, at most 100&nbsp;mL poured). Each entry is the mean over 10 episodes; Mean is the unweighted mean over the six tasks. TSR is undefined on hardware. Bold: best per column.</p>
+        </div>
+
+        <div class="real-findings">
+          <article><strong>0</strong><p>Throughput tasks completed by any model. The best C1 progress score is 21.5.</p></article>
+          <article><strong>100%</strong><p>A2 completion for Gemini&nbsp;4 Argon and GPT-6 Astra, yet every completed A2 and B1 episode exceeds its time requirement.</p></article>
+          <article><strong>2 of 6</strong><p>Models with any in-time success, only on A1 and B2. Mean PS is about 54 for the leading two and 4.8–11.2 for the open-weight models.</p></article>
+        </div>
+
+        <div class="real-compare">
+          <div><p class="insight-label">SIMULATION VS. REAL WORLD</p><h3>The model ranking transfers.</h3><p>Real-robot means plotted against simulated Overall scores for the same six models (API-served models from the latest evaluation with the fastest serving; open-weight models from the main agent table). The rankings agree, with Spearman ρ = <strong>1.00</strong> for PS, <strong>0.93</strong> for PSR and <strong>0.85</strong> for LTSR. Gemini&nbsp;4 Argon leads GPT-6 Astra in LTSR in both settings.</p><p class="real-caveat">Absolute rates differ, so the comparison supports the ordering of models, not a mapping of success rates.</p></div>
+          <figure><img src="assets/images/real-robot/real-vs-sim.png" alt="Three scatter plots of real-robot versus simulated PS, PSR and LTSR for six models, with Spearman correlations 1.00, 0.93 and 0.85" width="1512" height="473" loading="lazy"></figure>
+        </div>
+
+        <div class="b1-case">
+          <div class="b1-case-head"><div><p class="insight-label">CASE STUDY · B1 LEMON ON RED</p><h3>Everyone waited for red. Nobody was fast enough.</h3></div><p>One episode per model, timed from the moment the screen turned red. Every model waited for red, but the first motion came 5.0–11.5&nbsp;s later, and the three that delivered the lemon needed 45.8–78.1&nbsp;s against an 8.4&nbsp;s requirement. With one episode each, these runs illustrate behavior and do not rank the models.</p></div>
+          <div id="b1-case-tabs" class="leaderboard-filters b1-case-tabs" role="group" aria-label="Choose a model"></div>
+          <div class="b1-case-body">
+            <video id="b1-video" controls muted playsinline preload="none"></video>
+            <div class="b1-case-side">
+              <p class="b1-model" id="b1-model"></p>
+              <dl class="b1-times"><div><dt>First motion</dt><dd id="b1-start"></dd></div><div><dt>Grasp</dt><dd id="b1-grasp"></dd></div><div><dt>Lemon placed</dt><dd id="b1-placed"></dd></div><div><dt>PS</dt><dd id="b1-ps"></dd></div></dl>
+              <p class="real-caveat">Times are seconds after the red onset, from the operator’s record. Requirement: 8.4&nbsp;s. Real-time head-camera recording at 10&nbsp;fps; the overlay shows wall time and the current turn.</p>
+            </div>
+          </div>
+          <div id="b1-frames" class="b1-frames"></div>
+        </div>
+      </div>
     </section>
 
     <section id="resources" class="resources-section"><div class="wrap resources-inner"><div><p class="eyebrow">ROBOCLOCK</p><h2>Build robots that<br>can keep up.</h2><p>A benchmark for studying physical competence, temporal reasoning, and execution latency together.</p></div><div class="resource-actions"><a class="button primary" href="#tasks">Explore all 60 tasks</a><a id="paper-link" class="button secondary" hidden>Read the paper</a><a id="code-link" class="button secondary" hidden>Get the code</a></div></div></section>

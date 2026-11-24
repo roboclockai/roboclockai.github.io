@@ -16,19 +16,23 @@ In VS Code, install **HTML Preview** by **George Oliveira** (`george-alisson.htm
 ├── README.md                      # This collaboration guide
 ├── .nojekyll                      # Plain static GitHub Pages site
 ├── data/
-│   └── content.js                 # Tasks, final instructions, media and reported scores
+│   ├── content.js                 # Tasks, final instructions, media and reported scores
+│   └── real-robot.js              # Real-robot pilot: tasks, operator-scored results, B1 case study
 └── assets/
     ├── css/styles.css             # Responsive layout and paper-aligned colors
     ├── js/
     │   ├── app.js                 # Gallery, dialogs, search and leaderboard interactions
+    │   ├── real-robot.js          # Real-robot section rendering
     │   └── site-config.js         # Authors, affiliations and future resource links
     ├── branding/                  # Official wordmark and favicon
     ├── images/
     │   ├── featured/              # Featured scenes
     │   ├── thumbnails/<domain>/   # Task gallery images
-    │   └── sequences/<task>/      # Five chronological head-camera frames per task
-    └── videos/<domain>/<code>/
-        └── demo.mp4               # Final head/wrist-camera composite recording
+    │   ├── sequences/<task>/      # Five chronological head-camera frames per task
+    │   └── real-robot/            # Real-robot scene photos, head-camera views, B1 frames, real-vs-sim plot
+    └── videos/
+        ├── <domain>/<code>/demo.mp4   # Final head/wrist-camera composite recording
+        └── real-robot/b1/<model>.mp4  # Real-robot B1 head-camera recordings, one per model
 ```
 
 All HTML/JavaScript media paths are relative to `index.html`, including paths declared in `data/content.js`. Keep this structure when moving files.
@@ -42,6 +46,7 @@ All HTML/JavaScript media paths are relative to `index.html`, including paths de
 | Authors and future resource links | `assets/js/site-config.js` |
 | Final instructions, media paths and reported score rows | `data/content.js` |
 | Gallery, dialogs, task filters and scoreboard controls | `assets/js/app.js` |
+| Real-robot tasks, results and B1 case study | `data/real-robot.js`, `assets/js/real-robot.js` |
 
 ## Content and sources
 
@@ -52,6 +57,8 @@ All HTML/JavaScript media paths are relative to `index.html`, including paths de
 - The old primary pancake example is replaced by ice dispensing; the pancake task remains in the complete benchmark catalog.
 - Difficulty and seed displayed beside a demo describe that recording; they are separate from the model evaluation protocol. The imported release is oracle demonstration media, not a baseline-model rollout.
 - The supplied official logo and confirmed author list are retained. Paper/code/project-introduction/citation links remain hidden until public resources are confirmed. No private collection paths, HDF5 files or internal development logs are included here.
+
+- **Real Robot** follows the manuscript appendix "Real-Robot Pilot": xArm 6 hardware and interface, six tasks (A1–C2) with scene photos and first head-camera images, the operator step rubric, the 6 models × 6 tasks PS/PSR/LTSR table (10 episodes each, 360 in total), the real-vs-simulation rank comparison (Spearman ρ 1.00 / 0.93 / 0.85) and the B1 case study. The six B1 videos are the unedited 10 fps head-camera recordings of the case-study episodes, one per model.
 
 ## GitHub Pages
 
