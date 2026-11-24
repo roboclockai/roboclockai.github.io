@@ -202,15 +202,22 @@
   // Findings: headline number, paradigm cards and the PSR / TSR / LTSR comparison, all read from the leaderboard data.
   const pct=(v)=>v.toFixed(1)+'%';
   const findRow=(model,fineTuned)=>board.rows.find(row=>row.model===model&&row.fineTuned===fineTuned);
-  const bestVlm=board.rows.filter(row=>row.comparison==='vlm').reduce((x,y)=>y.scores.Overall.tsr>x.scores.Overall.tsr?y:x);
+  const vlmRows=board.rows.filter(row=>row.comparison==='vlm');
+  const top=(rows,metric)=>rows.reduce((x,y)=>y.scores.Overall[metric]>x.scores.Overall[metric]?y:x);
+  const vlmTsr=top(vlmRows,'tsr'),vlmLtsr=top(vlmRows,'ltsr');
   const wam=findRow('OpenWAM-α',true);
   const transfer=board.seenUnseenRows.find(row=>row.model==='X-VLA'&&row.fineTuned);
-  const headline=Math.max(...board.rows.map(row=>row.scores.Overall.ltsr));
+  const best=top(board.rows,'ltsr');
+  const label=(row)=>(row.fineTuned?'fine-tuned ':row.comparison==='vlm'?'zero-shot ':'')+row.model;
+  $('#headline-model').textContent=label(best);
+  $('#headline-vlm-model').textContent=vlmLtsr.model;
+  $('#insight-vlm-source').textContent=`Best of ${vlmRows.length} VLM agents (TSR: ${vlmTsr.model}; LTSR: ${vlmLtsr.model}) · Table 5`;
   const insightScores={
-    'headline-ltsr':headline,'headline-ltsr-inline':headline,
+    'headline-ltsr':best.scores.Overall.ltsr,'headline-ltsr-inline':best.scores.Overall.ltsr,'headline-vlm-ltsr':vlmLtsr.scores.Overall.ltsr,
     'insight-seen-tsr':transfer.scores.Seen.tsr,'insight-unseen-tsr':transfer.scores.Unseen.tsr,
     'insight-wam-tsr':wam.scores.Overall.tsr,'insight-wam-ltsr':wam.scores.Overall.ltsr,'insight-wam-psr':wam.scores.Overall.psr,
-    'insight-vlm-tsr':bestVlm.scores.Overall.tsr,'insight-vlm-ltsr':bestVlm.scores.Overall.ltsr,
+    'insight-vlm-tsr':vlmTsr.scores.Overall.tsr,'insight-vlm-ltsr':vlmLtsr.scores.Overall.ltsr,
+    'insight-vlm-tsr-inline':vlmTsr.scores.Overall.tsr,'insight-vlm-ltsr-inline':vlmLtsr.scores.Overall.ltsr,
   };
   Object.entries(insightScores).forEach(([id,value])=>{$('#'+id).textContent=pct(value);});
   const chartRows=[['π₀.₅',true,'VLA · fine-tuned'],['InternW0-Δ',true,'WAM · fine-tuned'],['GPT-6 Astra',false,'VLM agent · zero-shot'],['Gemini 4 Argon',false,'VLM agent · zero-shot']];

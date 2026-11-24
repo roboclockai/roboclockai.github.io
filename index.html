@@ -7,12 +7,12 @@
   <meta name="theme-color" content="#E94F19">
   <title>RoboClock · Time-Aware Robotic Intelligence</title>
   <link rel="icon" href="assets/branding/roboclock-icon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/css/styles.css?v=202611240408">
-  <script src="assets/js/site-config.js?v=202611240408" defer></script>
-  <script src="data/content.js?v=202611240408" defer></script>
-  <script src="assets/js/app.js?v=202611240408" defer></script>
-  <script src="data/real-robot.js?v=202611240408" defer></script>
-  <script src="assets/js/real-robot.js?v=202611240408" defer></script>
+  <link rel="stylesheet" href="assets/css/styles.css?v=202611240845">
+  <script src="assets/js/site-config.js?v=202611240845" defer></script>
+  <script src="data/content.js?v=202611240845" defer></script>
+  <script src="assets/js/app.js?v=202611240845" defer></script>
+  <script src="data/real-robot.js?v=202611240845" defer></script>
+  <script src="assets/js/real-robot.js?v=202611240845" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -92,7 +92,7 @@
     <section id="insights" class="section insights-section">
       <div class="wrap">
         <div class="section-heading"><p class="eyebrow">FINDINGS</p><h2>Can today's robots act<br>at the right time?</h2><p>Across more than 30 evaluated methods spanning VLAs, WAMs and VLM agents, physical competence does not guarantee timely success.</p></div>
-        <div class="headline-result"><strong id="headline-ltsr">8.3%</strong><p>Even on Easy-level tasks, the best latency-aligned temporal success rate is only <span id="headline-ltsr-inline">8.3%</span>, reached by the fine-tuned π₀.₅ and the zero-shot Gemini&nbsp;4 Argon agent.</p></div>
+        <div class="headline-result"><strong id="headline-ltsr">8.3%</strong><p>Even on Easy-level tasks, the best latency-aligned temporal success rate is only <span id="headline-ltsr-inline">8.3%</span>, reached by the <span id="headline-model">fine-tuned π₀.₅</span>. The best zero-shot VLM agent, <span id="headline-vlm-model">Gemini 4 Argon</span>, reaches <span id="headline-vlm-ltsr">8.2%</span>.</p></div>
         <figure class="pst-figure" aria-labelledby="pst-title">
           <figcaption><h3 id="pst-title">Physical success vs. temporal success</h3><p>Overall success rate (%) of four representative methods under the three success criteria.</p></figcaption>
           <div class="pst-legend" aria-hidden="true"><span><i class="pst-swatch psr"></i>PSR · physical success</span><span><i class="pst-swatch tsr"></i>TSR · temporal success, inference paused</span><span><i class="pst-swatch ltsr"></i>LTSR · latency-aligned temporal success</span></div>
@@ -102,7 +102,7 @@
         <div class="insight-grid">
           <article class="insight-card"><p class="insight-label">FINE-TUNED VLAs</p><h3>Limited generalization to unseen tasks</h3><div class="insight-pair"><div><strong id="insight-seen-tsr">8.2%</strong><span>TSR · 45 seen tasks</span></div><span class="insight-transition" aria-hidden="true">→</span><div><strong id="insight-unseen-tsr">2.0%</strong><span>TSR · 15 held-out tasks</span></div></div><p>VLAs benefit substantially from fine-tuning and keep most of their temporal success under latency, yet on the held-out tasks only X-VLA reaches a nonzero TSR.</p><p class="insight-source">Fine-tuned X-VLA · Table 3</p></article>
           <article class="insight-card"><p class="insight-label">WAMs</p><h3>Sensitive to inference latency</h3><div class="insight-pair"><div><strong id="insight-wam-tsr">10.0%</strong><span>TSR · inference paused</span></div><span class="insight-transition" aria-hidden="true">→</span><div><strong id="insight-wam-ltsr">3.8%</strong><span>LTSR · latency-aligned</span></div></div><p>WAMs achieve the highest physical success (<span id="insight-wam-psr">14.8%</span> PSR), but most of their temporal success is lost once inference latency advances environment time.</p><p class="insight-source">Fine-tuned OpenWAM-α · Table 2</p></article>
-          <article class="insight-card"><p class="insight-label">VLM AGENTS</p><h3>Inference latency limits temporal success</h3><div class="insight-pair"><div><strong id="insight-vlm-tsr">20.0%</strong><span>TSR · inference paused</span></div><span class="insight-transition" aria-hidden="true">→</span><div><strong id="insight-vlm-ltsr">8.3%</strong><span>LTSR · latency-aligned</span></div></div><p>VLM agents exhibit zero-shot transfer without robot-specific training, yet inference latency reduces their temporal success from up to 20.0% to at most 8.3%.</p><p class="insight-source">Gemini 4 Argon · Tool-augmented EEF · Table 5</p></article>
+          <article class="insight-card"><p class="insight-label">VLM AGENTS</p><h3>Inference latency limits temporal success</h3><div class="insight-pair"><div><strong id="insight-vlm-tsr">19.0%</strong><span>Best TSR · inference paused</span></div><span class="insight-transition" aria-hidden="true">→</span><div><strong id="insight-vlm-ltsr">8.2%</strong><span>Best LTSR · latency-aligned</span></div></div><p>VLM agents exhibit zero-shot transfer without robot-specific training, yet inference latency reduces their temporal success from up to <span id="insight-vlm-tsr-inline">19.0%</span> to at most <span id="insight-vlm-ltsr-inline">8.2%</span>.</p><p class="insight-source" id="insight-vlm-source">Best of 12 VLM agents · Tool-augmented EEF · Table 5</p></article>
         </div>
         <a class="button secondary insight-link" href="#leaderboard">Back to the full leaderboard</a>
       </div>

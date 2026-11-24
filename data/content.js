@@ -2257,7 +2257,7 @@ window.ROBOCLOCK_DATA = {
   },
   "leaderboard": {
     "sourceFile": "tables/results.tex",
-    "sourceSha256": "b89ee3592307811152c2ff4aa9f4b08b87538d8dc2102a3d3da41c5c63a1435c",
+    "sourceSha256": "1519287b2b320ae9f3f35fb158011f4af4e3ade609e04b4657e9c4a5e82988fb",
     "scoreUnit": "percent",
     "tables": [
       {
@@ -2853,7 +2853,7 @@ window.ROBOCLOCK_DATA = {
           "file": "tables/results.tex",
           "table": "tab:interface-results",
           "tableNumber": 4,
-          "line": 73,
+          "line": 72,
           "citationKeys": [
             "si2026pyrualean"
           ]
@@ -2898,7 +2898,7 @@ window.ROBOCLOCK_DATA = {
           "file": "tables/results.tex",
           "table": "tab:interface-results",
           "tableNumber": 4,
-          "line": 74,
+          "line": 73,
           "citationKeys": [
             "zhang2026harnessvla"
           ]
@@ -2943,7 +2943,7 @@ window.ROBOCLOCK_DATA = {
           "file": "tables/results.tex",
           "table": "tab:interface-results",
           "tableNumber": 4,
-          "line": 75,
+          "line": 74,
           "citationKeys": [
             "gao2026hexashell"
           ]
@@ -2988,7 +2988,7 @@ window.ROBOCLOCK_DATA = {
           "file": "tables/results.tex",
           "table": "tab:interface-results",
           "tableNumber": 4,
-          "line": 76,
+          "line": 75,
           "citationKeys": [
             "mmlab2026physicalrsi"
           ]
@@ -3033,7 +3033,7 @@ window.ROBOCLOCK_DATA = {
           "file": "tables/results.tex",
           "table": "tab:interface-results",
           "tableNumber": 4,
-          "line": 77,
+          "line": 76,
           "citationKeys": [
             "yuan2026unirobotagent"
           ]
@@ -3078,7 +3078,7 @@ window.ROBOCLOCK_DATA = {
           "file": "tables/results.tex",
           "table": "tab:interface-results",
           "tableNumber": 4,
-          "line": 78,
+          "line": 77,
           "citationKeys": [
             "sensenova2026roborsi"
           ]
@@ -3123,7 +3123,7 @@ window.ROBOCLOCK_DATA = {
           "file": "tables/results.tex",
           "table": "tab:interface-results",
           "tableNumber": 4,
-          "line": 80,
+          "line": 79,
           "citationKeys": []
         },
         "backbone": "Qwen3.8-27B",
@@ -3166,7 +3166,7 @@ window.ROBOCLOCK_DATA = {
           "file": "tables/results.tex",
           "table": "tab:interface-results",
           "tableNumber": 4,
-          "line": 81,
+          "line": 80,
           "citationKeys": []
         },
         "backbone": "Qwen3.8-27B",
@@ -3209,7 +3209,7 @@ window.ROBOCLOCK_DATA = {
           "file": "tables/results.tex",
           "table": "tab:interface-results",
           "tableNumber": 4,
-          "line": 82,
+          "line": 81,
           "citationKeys": []
         },
         "backbone": "Qwen3.8-27B",
@@ -3252,7 +3252,7 @@ window.ROBOCLOCK_DATA = {
           "file": "tables/results.tex",
           "table": "tab:agent-results",
           "tableNumber": 5,
-          "line": 98,
+          "line": 97,
           "citationKeys": [
             "google2026gemini4argon"
           ]
@@ -3262,28 +3262,28 @@ window.ROBOCLOCK_DATA = {
         "input": "vision-language",
         "scores": {
           "A": {
-            "ps": 48.7,
-            "psr": 28.9,
-            "tsr": 21.1,
+            "ps": 41.1,
+            "psr": 24.7,
+            "tsr": 20.5,
             "ltsr": 10.5
           },
           "B": {
-            "ps": 42.8,
-            "psr": 39.6,
-            "tsr": 29.2,
-            "ltsr": 12.5
+            "ps": 40.4,
+            "psr": 36.3,
+            "tsr": 24.6,
+            "ltsr": 12.1
           },
           "C": {
-            "ps": 22.2,
-            "psr": 5.9,
-            "tsr": 5.9,
+            "ps": 21.8,
+            "psr": 7.6,
+            "tsr": 6.5,
             "ltsr": 0.0
           },
           "Overall": {
-            "ps": 38.8,
-            "psr": 26.7,
-            "tsr": 20.0,
-            "ltsr": 8.3
+            "ps": 35.3,
+            "psr": 24.5,
+            "tsr": 18.2,
+            "ltsr": 8.2
           }
         },
         "comparison": "vlm"
@@ -3298,7 +3298,7 @@ window.ROBOCLOCK_DATA = {
           "file": "tables/results.tex",
           "table": "tab:agent-results",
           "tableNumber": 5,
-          "line": 99,
+          "line": 98,
           "citationKeys": [
             "anthropic2026opus55"
           ]
@@ -3308,28 +3308,28 @@ window.ROBOCLOCK_DATA = {
         "input": "vision-language",
         "scores": {
           "A": {
-            "ps": 35.0,
-            "psr": 15.8,
-            "tsr": 10.5,
+            "ps": 30.5,
+            "psr": 17.4,
+            "tsr": 12.6,
             "ltsr": 0.0
           },
           "B": {
-            "ps": 30.5,
-            "psr": 22.9,
-            "tsr": 18.8,
-            "ltsr": 2.1
+            "ps": 30.8,
+            "psr": 26.7,
+            "tsr": 23.8,
+            "ltsr": 2.5
           },
           "C": {
-            "ps": 13.3,
-            "psr": 0.0,
-            "tsr": 0.0,
+            "ps": 12.9,
+            "psr": 1.2,
+            "tsr": 0.6,
             "ltsr": 0.0
           },
           "Overall": {
-            "ps": 27.1,
-            "psr": 14.2,
-            "tsr": 10.8,
-            "ltsr": 0.8
+            "ps": 25.7,
+            "psr": 16.5,
+            "tsr": 13.7,
+            "ltsr": 1.0
           }
         },
         "comparison": "vlm"
@@ -3344,7 +3344,7 @@ window.ROBOCLOCK_DATA = {
           "file": "tables/results.tex",
           "table": "tab:agent-results",
           "tableNumber": 5,
-          "line": 100,
+          "line": 99,
           "citationKeys": [
             "openai2026gpt6astra"
           ]
@@ -3354,28 +3354,28 @@ window.ROBOCLOCK_DATA = {
         "input": "vision-language",
         "scores": {
           "A": {
-            "ps": 43.4,
-            "psr": 23.7,
-            "tsr": 15.8,
-            "ltsr": 5.3
+            "ps": 43.7,
+            "psr": 28.4,
+            "tsr": 22.1,
+            "ltsr": 5.8
           },
           "B": {
-            "ps": 48.1,
-            "psr": 39.6,
-            "tsr": 27.1,
-            "ltsr": 4.2
+            "ps": 40.8,
+            "psr": 34.6,
+            "tsr": 30.0,
+            "ltsr": 2.9
           },
           "C": {
-            "ps": 24.5,
-            "psr": 2.9,
-            "tsr": 2.9,
+            "ps": 18.8,
+            "psr": 0.0,
+            "tsr": 0.0,
             "ltsr": 0.0
           },
           "Overall": {
-            "ps": 39.9,
-            "psr": 24.2,
-            "tsr": 16.7,
-            "ltsr": 3.4
+            "ps": 35.5,
+            "psr": 22.8,
+            "tsr": 19.0,
+            "ltsr": 3.0
           }
         },
         "comparison": "vlm"
@@ -3390,7 +3390,7 @@ window.ROBOCLOCK_DATA = {
           "file": "tables/results.tex",
           "table": "tab:agent-results",
           "tableNumber": 5,
-          "line": 101,
+          "line": 100,
           "citationKeys": [
             "openai2026gpt61sol"
           ]
@@ -3400,28 +3400,28 @@ window.ROBOCLOCK_DATA = {
         "input": "vision-language",
         "scores": {
           "A": {
-            "ps": 40.1,
-            "psr": 21.1,
-            "tsr": 21.1,
-            "ltsr": 2.6
+            "ps": 38.9,
+            "psr": 27.4,
+            "tsr": 24.2,
+            "ltsr": 1.6
           },
           "B": {
-            "ps": 35.3,
-            "psr": 29.2,
-            "tsr": 20.8,
-            "ltsr": 4.2
+            "ps": 37.1,
+            "psr": 32.9,
+            "tsr": 24.2,
+            "ltsr": 4.6
           },
           "C": {
-            "ps": 18.8,
-            "psr": 2.9,
-            "tsr": 2.9,
+            "ps": 15.3,
+            "psr": 0.0,
+            "tsr": 0.0,
             "ltsr": 0.0
           },
           "Overall": {
-            "ps": 32.1,
-            "psr": 19.2,
-            "tsr": 15.8,
-            "ltsr": 2.5
+            "ps": 31.5,
+            "psr": 21.8,
+            "tsr": 17.3,
+            "ltsr": 2.3
           }
         },
         "comparison": "vlm"
@@ -3436,7 +3436,7 @@ window.ROBOCLOCK_DATA = {
           "file": "tables/results.tex",
           "table": "tab:agent-results",
           "tableNumber": 5,
-          "line": 103,
+          "line": 102,
           "citationKeys": [
             "qwen2026qwen35"
           ]
@@ -3482,7 +3482,7 @@ window.ROBOCLOCK_DATA = {
           "file": "tables/results.tex",
           "table": "tab:agent-results",
           "tableNumber": 5,
-          "line": 104,
+          "line": 103,
           "citationKeys": [
             "qwen2026qwen35"
           ]
@@ -3528,7 +3528,7 @@ window.ROBOCLOCK_DATA = {
           "file": "tables/results.tex",
           "table": "tab:agent-results",
           "tableNumber": 5,
-          "line": 105,
+          "line": 104,
           "citationKeys": [
             "google2026gemma4"
           ]
@@ -3574,7 +3574,7 @@ window.ROBOCLOCK_DATA = {
           "file": "tables/results.tex",
           "table": "tab:agent-results",
           "tableNumber": 5,
-          "line": 106,
+          "line": 105,
           "citationKeys": [
             "qwen2026qwen38"
           ]
@@ -3620,7 +3620,7 @@ window.ROBOCLOCK_DATA = {
           "file": "tables/results.tex",
           "table": "tab:agent-results",
           "tableNumber": 5,
-          "line": 107,
+          "line": 106,
           "citationKeys": [
             "meta2026museglimmer"
           ]
@@ -3666,7 +3666,7 @@ window.ROBOCLOCK_DATA = {
           "file": "tables/results.tex",
           "table": "tab:agent-results",
           "tableNumber": 5,
-          "line": 108,
+          "line": 107,
           "citationKeys": [
             "qwen2026qwen38"
           ]
@@ -3712,7 +3712,7 @@ window.ROBOCLOCK_DATA = {
           "file": "tables/results.tex",
           "table": "tab:agent-results",
           "tableNumber": 5,
-          "line": 109,
+          "line": 108,
           "citationKeys": [
             "deepseek2026v41"
           ]
@@ -3758,7 +3758,7 @@ window.ROBOCLOCK_DATA = {
           "file": "tables/results.tex",
           "table": "tab:agent-results",
           "tableNumber": 5,
-          "line": 110,
+          "line": 109,
           "citationKeys": [
             "zai2026glm53"
           ]
