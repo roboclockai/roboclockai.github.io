@@ -50,7 +50,7 @@ All HTML/JavaScript media paths are relative to `index.html`, including paths de
 
 ## Content and sources
 
-- **Insights & Observations** presents source-linked findings. GPT-6 Astra's reported TSR is **19.2%** and LTSR is **0.8%**, following the current manuscript. Policy-agent comparisons explicitly note differences in training and interfaces.
+- **Insights & Observations** presents source-linked findings. the strongest VLM agent (Gemini 4 Argon) falls from **20.0%** TSR to **8.3%** LTSR, which ties fine-tuned π₀.₅ (8.3%), following the current manuscript (`CVPR_roboclock_new/roboclock.pdf`, Tables 2–5). Policy-agent comparisons explicitly note differences in training and interfaces.
 - **Leaderboard** includes 33 reported configurations from manuscript Tables 2, 4 and 5. It supports group filters, Overall/A/B/C task groups, model search and metric sorting. The expandable transfer comparison includes all eight rows from Table 3. Missing PS is displayed as unavailable, never zero. These are reported results, not a new evaluation run or an open submission leaderboard.
 - **Final task demos** come from [robogym release 20633da](https://github.com/NorahYujieZhao/robogym/tree/20633da0e8e2b3d3e9b98ccca5971a1012008c56/data): one exact `demo.mp4` and complete instruction from its `demo.json` for each of 60 tasks. Metadata and videos are matched by the final release's domain/task code. Updated healthcare definitions and sports A2/B5 assignments supersede stale catalog mappings.
 - Videos are copied byte-for-byte, retaining the head view above the two wrist views. Thumbnails and chronological stills extract the original head-camera portion. Every task has a video and five frames; the homepage gallery selects 22 distinct tasks across all five domains.

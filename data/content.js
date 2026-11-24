@@ -2257,7 +2257,7 @@ window.ROBOCLOCK_DATA = {
   },
   "leaderboard": {
     "sourceFile": "tables/results.tex",
-    "sourceSha256": "94a41bda7083e7cbf62cd26cce87843fbca9a5cbd83786a367a62d49732e3edb",
+    "sourceSha256": "b89ee3592307811152c2ff4aa9f4b08b87538d8dc2102a3d3da41c5c63a1435c",
     "scoreUnit": "percent",
     "tables": [
       {
@@ -3262,28 +3262,28 @@ window.ROBOCLOCK_DATA = {
         "input": "vision-language",
         "scores": {
           "A": {
-            "ps": 42.1,
-            "psr": 26.3,
+            "ps": 48.7,
+            "psr": 28.9,
             "tsr": 21.1,
-            "ltsr": 0.0
+            "ltsr": 10.5
           },
           "B": {
-            "ps": 39.6,
-            "psr": 35.4,
-            "tsr": 25.0,
-            "ltsr": 2.5
+            "ps": 42.8,
+            "psr": 39.6,
+            "tsr": 29.2,
+            "ltsr": 12.5
           },
           "C": {
-            "ps": 22.4,
-            "psr": 8.8,
-            "tsr": 8.2,
+            "ps": 22.2,
+            "psr": 5.9,
+            "tsr": 5.9,
             "ltsr": 0.0
           },
           "Overall": {
-            "ps": 35.5,
-            "psr": 25.0,
-            "tsr": 19.0,
-            "ltsr": 1.0
+            "ps": 38.8,
+            "psr": 26.7,
+            "tsr": 20.0,
+            "ltsr": 8.3
           }
         },
         "comparison": "vlm"
@@ -3308,28 +3308,28 @@ window.ROBOCLOCK_DATA = {
         "input": "vision-language",
         "scores": {
           "A": {
-            "ps": 31.6,
+            "ps": 35.0,
             "psr": 15.8,
-            "tsr": 13.2,
+            "tsr": 10.5,
             "ltsr": 0.0
           },
           "B": {
-            "ps": 30.4,
-            "psr": 27.1,
-            "tsr": 22.9,
-            "ltsr": 0.0
+            "ps": 30.5,
+            "psr": 22.9,
+            "tsr": 18.8,
+            "ltsr": 2.1
           },
           "C": {
-            "ps": 11.8,
-            "psr": 2.9,
-            "tsr": 2.4,
+            "ps": 13.3,
+            "psr": 0.0,
+            "tsr": 0.0,
             "ltsr": 0.0
           },
           "Overall": {
-            "ps": 25.5,
-            "psr": 16.7,
-            "tsr": 14.0,
-            "ltsr": 0.0
+            "ps": 27.1,
+            "psr": 14.2,
+            "tsr": 10.8,
+            "ltsr": 0.8
           }
         },
         "comparison": "vlm"
@@ -3354,28 +3354,28 @@ window.ROBOCLOCK_DATA = {
         "input": "vision-language",
         "scores": {
           "A": {
-            "ps": 45.3,
-            "psr": 28.9,
-            "tsr": 21.1,
-            "ltsr": 0.0
+            "ps": 43.4,
+            "psr": 23.7,
+            "tsr": 15.8,
+            "ltsr": 5.3
           },
           "B": {
-            "ps": 41.7,
-            "psr": 33.3,
-            "tsr": 31.3,
-            "ltsr": 2.1
+            "ps": 48.1,
+            "psr": 39.6,
+            "tsr": 27.1,
+            "ltsr": 4.2
           },
           "C": {
-            "ps": 20.0,
-            "psr": 0.0,
-            "tsr": 0.0,
+            "ps": 24.5,
+            "psr": 2.9,
+            "tsr": 2.9,
             "ltsr": 0.0
           },
           "Overall": {
-            "ps": 36.7,
-            "psr": 22.5,
-            "tsr": 19.2,
-            "ltsr": 0.8
+            "ps": 39.9,
+            "psr": 24.2,
+            "tsr": 16.7,
+            "ltsr": 3.4
           }
         },
         "comparison": "vlm"
@@ -3400,28 +3400,28 @@ window.ROBOCLOCK_DATA = {
         "input": "vision-language",
         "scores": {
           "A": {
-            "ps": 40.5,
-            "psr": 26.3,
-            "tsr": 23.7,
-            "ltsr": 0.0
+            "ps": 40.1,
+            "psr": 21.1,
+            "tsr": 21.1,
+            "ltsr": 2.6
           },
           "B": {
-            "ps": 38.3,
-            "psr": 33.3,
-            "tsr": 25.0,
-            "ltsr": 0.0
+            "ps": 35.3,
+            "psr": 29.2,
+            "tsr": 20.8,
+            "ltsr": 4.2
           },
           "C": {
-            "ps": 14.1,
-            "psr": 0.0,
-            "tsr": 0.0,
+            "ps": 18.8,
+            "psr": 2.9,
+            "tsr": 2.9,
             "ltsr": 0.0
           },
           "Overall": {
-            "ps": 32.2,
-            "psr": 21.7,
-            "tsr": 17.5,
-            "ltsr": 0.0
+            "ps": 32.1,
+            "psr": 19.2,
+            "tsr": 15.8,
+            "ltsr": 2.5
           }
         },
         "comparison": "vlm"

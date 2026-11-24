@@ -262,7 +262,8 @@
     ['Seen','Unseen'].forEach(scope=>['psr','tsr','ltsr'].forEach(metric=>tr.append(el('td','score-cell',scoreText(row.scores[scope][metric])))));
     $('#transfer-body').append(tr);
   });
-  const astra=board.rows.find(row=>row.model==='GPT-6 Astra');
+  // Insight 1 follows the VLM agent with the highest inference-paused TSR (Gemini 4 Argon in the current manuscript).
+  const astra=board.rows.filter(row=>row.comparison==='vlm').reduce((a,b)=>b.scores.Overall.tsr>a.scores.Overall.tsr?b:a);
   const policy=board.rows.find(row=>row.model==='π₀.₅'&&row.fineTuned);
   const transfer=board.seenUnseenRows.find(row=>row.model==='X-VLA'&&row.fineTuned);
   const insightScores={
