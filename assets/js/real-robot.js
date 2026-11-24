@@ -41,34 +41,24 @@
     card.append(media, body); grid.append(card);
   });
 
-  // Results table with a metric switch.
-  const metrics = ['PS', 'PSR', 'LTSR'];
-  let metric = 2;
+  // Results table: every task with PS / PSR / LTSR side by side, as in the manuscript.
   const tbody = $('#real-results-body');
-  const render = () => {
-    const columns = data.tasks.length + 1;
-    const best = Array.from({ length: columns }, (_, c) => Math.max(...data.results.map((r) => (c < data.tasks.length ? r.scores[c] : r.mean)[metric])));
-    tbody.replaceChildren();
-    data.results.forEach((row) => {
-      const tr = el('tr');
-      const th = el('th', 'leaderboard-model', row.model); th.scope = 'row'; tr.append(th);
-      [...row.scores, row.mean].forEach((s, c) => {
-        const isMean = c === data.tasks.length;
-        const v = s[metric]; const td = el('td', isMean ? 'real-mean' : null, isMean ? v.toFixed(1) : fmt(v));
-        if (v > 0 && v === best[c]) td.classList.add('best');
-        if (v === 0) td.classList.add('zero');
-        tr.append(td);
-      });
-      tbody.append(tr);
+  const columns = (row) => [...row.scores, row.mean].flat();
+  const nCols = (data.tasks.length + 1) * 3;
+  const best = Array.from({ length: nCols }, (_, c) => Math.max(...data.results.map((r) => columns(r)[c])));
+  data.results.forEach((row) => {
+    const tr = el('tr');
+    const th = el('th', 'leaderboard-model', row.model); th.scope = 'row'; tr.append(th);
+    columns(row).forEach((v, c) => {
+      const isMean = c >= data.tasks.length * 3;
+      const td = el('td', isMean ? 'real-mean' : null, isMean ? v.toFixed(1) : fmt(v));
+      if (c % 3 === 0) td.classList.add('group-start');
+      if (v > 0 && v === best[c]) td.classList.add('best');
+      if (v === 0) td.classList.add('zero');
+      tr.append(td);
     });
-    document.querySelectorAll('[data-real-metric]').forEach((b) => {
-      const on = Number(b.dataset.realMetric) === metric;
-      b.classList.toggle('active', on); b.setAttribute('aria-pressed', String(on));
-    });
-    $('#real-metric-name').textContent = metrics[metric];
-  };
-  document.querySelectorAll('[data-real-metric]').forEach((b) => b.addEventListener('click', () => { metric = Number(b.dataset.realMetric); render(); }));
-  render();
+    tbody.append(tr);
+  });
 
   // B1 case study: model switcher with the head-camera recording and four key frames.
   const caseHost = $('#b1-case-tabs');

@@ -146,8 +146,13 @@
 .real-task-facts{margin:auto 0 0;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:13px;line-height:1.55;border-top:1px solid var(--line);padding-top:12px}
 .real-task-facts dt{color:#8a95a6;font-weight:500}
 .real-task-facts dd{margin:0;color:var(--ink)}
-.real-results-table{min-width:720px}
+.real-results-table{min-width:1080px;font-size:13px}
+.real-results-table thead th,.real-results-table th,.real-results-table td{padding:10px 7px}
 .real-results-table th:not(:first-child),.real-results-table td{text-align:right}
+.real-results-table thead th.real-group{text-align:center;border-left:1px solid #dce1e8;padding-bottom:6px}
+.real-results-table tr.real-sub th{position:static;font-size:11px;font-weight:600;color:#717986;padding-top:4px}
+.real-results-table tr.real-sub th:nth-child(3n+1),.real-results-table td.group-start{border-left:1px solid #edf0f4}
+.real-results-table th.leaderboard-model{min-width:170px;padding-left:16px}
 .real-results-table td.zero{color:#a7afbb}
 .real-results-table td.best{font-weight:700;color:var(--accent)}
 .real-results-table td.real-mean{background:#fbf6f2;font-weight:600}
