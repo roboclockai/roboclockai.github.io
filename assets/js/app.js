@@ -93,7 +93,8 @@
     const affiliations = el('div', 'affiliations');
     (config.affiliations || []).forEach((affiliation) => {
       const link = el('a'); link.href = affiliation.url; link.target = '_blank'; link.rel = 'noopener noreferrer';
-      link.append(el('sup', null, affiliation.id), document.createTextNode(' ' + affiliation.name));
+      if (affiliation.id) link.append(el('sup', null, affiliation.id), document.createTextNode(' '));
+      link.append(document.createTextNode(affiliation.name));
       affiliations.append(link);
     });
     container.append(affiliations); container.hidden = false;
