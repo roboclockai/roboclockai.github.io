@@ -194,3 +194,17 @@
 .link-pill.pending:hover{background:#eef0f4;transform:none}
 .link-pill small{font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;background:white;color:#8a93a3;border-radius:999px;padding:1px 7px}
 @media(max-width:760px){.hero-links{gap:7px;margin-top:22px}.link-pill{height:36px;padding:0 13px;font-size:12px;gap:6px}.link-pill svg{width:15px;height:15px}}
+/* Full leaderboard: A/B/C/Overall x PS/PSR/TSR/LTSR */
+.main-board{min-width:1320px;font-size:13px}
+.main-board thead th,.main-board th,.main-board td{padding:11px 8px}
+.main-board thead th.lb-group{text-align:center;border-left:1px solid #dce1e8;padding-bottom:5px}
+.main-board .lb-group-a{color:var(--a)}.main-board .lb-group-b{color:var(--b)}.main-board .lb-group-c{color:var(--c)}
+.main-board tr.lb-sub th{position:static;text-align:right;padding-top:3px}
+.main-board tr.lb-sub th:nth-child(4n+1),.main-board td.group-start{border-left:1px solid #edf0f4}
+.main-board thead button{font-size:12px}
+.main-board .score-cell{min-width:52px}
+.main-board td.overall-cell{background:#fbf7f4}
+.main-board td.best-score{font-weight:700;color:var(--ink)}
+.main-board td.selected-score{color:var(--accent);font-weight:700;background:#fff1e8}
+.main-board th.leaderboard-model{min-width:200px}
+.main-board .ft-mark{font-weight:500;font-style:italic;color:var(--accent);font-size:12px}

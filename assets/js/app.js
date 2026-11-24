@@ -223,7 +223,9 @@
   }));
   // The leaderboard preserves every reported row and missing metric.
   const board=data.leaderboard;
-  const boardState={comparison:'all',scope:'Overall',sort:'ltsr',search:''};
+  const boardState={comparison:'all',sort:'Overall.ltsr',search:''};
+  const groups=['A','B','C','Overall'],metrics=['ps','psr','tsr','ltsr'];
+  const valueOf=(row,key)=>{const [g,m]=key.split('.');return row.scores[g][m];};
   const conditionLabel=(row)=>row.fineTuned?'Fine-tuned':row.condition==='released'?'Released checkpoint':row.family==='Agent framework'?'Qwen3.8-27B backbone':row.family==='Text-only reference'?'Text-only · Tool-augmented EEF':'Tool-augmented EEF';
   const scoreText=(value)=>value==null?'—':value.toFixed(1);
   function renderLeaderboard(){
@@ -231,27 +233,32 @@
     const rows=board.rows.filter(row=>(boardState.comparison==='all'||row.comparison===boardState.comparison)&&
       (!query||[row.model,row.family,conditionLabel(row)].join(' ').toLowerCase().includes(query)));
     rows.sort((a,b)=>{
-      const av=a.scores[boardState.scope][boardState.sort],bv=b.scores[boardState.scope][boardState.sort];
+      const av=valueOf(a,boardState.sort),bv=valueOf(b,boardState.sort);
       return (bv??-1)-(av??-1)||a.model.localeCompare(b.model)||Number(b.fineTuned)-Number(a.fineTuned);
     });
+    const best={};groups.forEach(g=>metrics.forEach(m=>{const vals=rows.map(r=>r.scores[g][m]).filter(v=>v!=null);best[g+'.'+m]=vals.length?Math.max(...vals):null;}));
     const host=$('#leaderboard-body');host.replaceChildren();let rank=0,previous=null;
     rows.forEach((row,index)=>{
-      const scores=row.scores[boardState.scope];const value=scores[boardState.sort];
+      const value=valueOf(row,boardState.sort);
       if(value!==previous||index===0)rank=index+1;previous=value;
       const tr=el('tr');tr.dataset.resultId=row.id;
       if(row.fineTuned)tr.classList.add('fine-tuned-row');
       tr.append(el('td','rank-cell',value==null?'—':String(rank)));
-      const model=el('th','leaderboard-model');model.scope='row';model.append(el('strong',null,row.model),el('span','family-tag',row.family));
-      const condition=el('td','configuration-cell',conditionLabel(row));
-      condition.append(el('small',null,'Manuscript Table '+row.source.tableNumber));
-      tr.append(model,condition);
-      ['ps','psr','tsr','ltsr'].forEach(metric=>{
-        const cell=el('td','score-cell',scoreText(scores[metric]));cell.dataset.metric=metric;
-        if(metric===boardState.sort)cell.classList.add('selected-score');
+      const model=el('th','leaderboard-model');model.scope='row';
+      const name=el('strong',null,row.model);if(row.fineTuned)name.append(el('span','ft-mark',' + fine-tuned'));
+      model.append(name,el('span','family-tag',row.family));
+      tr.append(model);
+      groups.forEach(g=>metrics.forEach((m,i)=>{
+        const key=g+'.'+m;const v=row.scores[g][m];
+        const cell=el('td','score-cell',scoreText(v));cell.dataset.metric=key;
+        if(i===0)cell.classList.add('group-start');
+        if(g==='Overall')cell.classList.add('overall-cell');
+        if(v!=null&&v>0&&v===best[key])cell.classList.add('best-score');
+        if(key===boardState.sort)cell.classList.add('selected-score');
         tr.append(cell);
-      });host.append(tr);
+      }));host.append(tr);
     });
-    $('#leaderboard-count').textContent=rows.length+(rows.length===1?' configuration':' configurations')+' · '+boardState.scope;
+    $('#leaderboard-count').textContent=rows.length+(rows.length===1?' configuration':' configurations');
     $('#leaderboard-empty').hidden=rows.length!==0;
     $$('[data-comparison]').forEach(button=>{const active=button.dataset.comparison===boardState.comparison;button.classList.toggle('active',active);button.setAttribute('aria-pressed',String(active));});
     $$('[data-score-heading]').forEach(th=>{if(th.dataset.scoreHeading===boardState.sort)th.setAttribute('aria-sort','descending');else th.removeAttribute('aria-sort');});
@@ -259,7 +266,6 @@
   }
   $$('[data-comparison]').forEach(button=>button.addEventListener('click',()=>{boardState.comparison=button.dataset.comparison;renderLeaderboard();}));
   $$('[data-sort]').forEach(button=>button.addEventListener('click',()=>{boardState.sort=button.dataset.sort;renderLeaderboard();}));
-  $('#leaderboard-scope').addEventListener('change',event=>{boardState.scope=event.target.value;renderLeaderboard();});
   $('#leaderboard-search').addEventListener('input',event=>{boardState.search=event.target.value;renderLeaderboard();});
   renderLeaderboard();
   board.seenUnseenRows.forEach(row=>{
