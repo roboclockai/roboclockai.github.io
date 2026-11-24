@@ -277,7 +277,7 @@
     });
     item.append(label,bars);$('#pst-chart').append(item);
   });
-  const observed = $$('#gallery,#benchmark,#evaluation,#insights,#leaderboard,#real-robot,#resources');
+  const observed = $$('#gallery,#benchmark,#evaluation,#leaderboard,#insights,#real-robot,#resources');
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries) => {
       for (const entry of entries) if (entry.isIntersecting) $$('#nav-links a').forEach((a) => a.classList.toggle('current',a.hash==='#'+entry.target.id));
