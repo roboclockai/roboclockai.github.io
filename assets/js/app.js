@@ -76,6 +76,13 @@
     });
     container.append(affiliations); container.hidden = false;
   }
+  // Demo video template: placeholder until site-config.js provides projectVideoUrl.
+  if (config.projectVideoUrl) {
+    const player = $('#demo-player');
+    player.src = config.projectVideoUrl;
+    if (config.projectVideoPoster) player.poster = config.projectVideoPoster;
+    player.hidden = false; $('#demo-placeholder').hidden = true;
+  }
   // Hero resource pills: show 'Soon' until a URL is configured in site-config.js.
   for (const [id, url] of [['hero-paper', config.paperUrl], ['hero-code', config.codeUrl], ['hero-data', config.dataUrl]]) {
     const pill = $('#' + id); if (!pill || !url) continue;
