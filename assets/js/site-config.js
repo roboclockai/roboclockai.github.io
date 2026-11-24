@@ -15,8 +15,8 @@ window.ROBOCLOCK_CONFIG = {
     { name: "University of California, San Diego", url: "https://ucsd.edu" },
   ],
   paperUrl: "roboclock.pdf",
-  codeUrl: null,
-  dataUrl: null,      // dataset / simulation assets (e.g. Hugging Face)
+  codeUrl: "https://github.com/roboclockai/roboclock",
+  dataUrl: "https://huggingface.co/datasets/Roboclockai/roboclock-assets",      // dataset / simulation assets (e.g. Hugging Face)
   // Demo video under the hero. Put the file at assets/videos/demo/roboclock-demo.mp4 and set
   // projectVideoUrl: "assets/videos/demo/roboclock-demo.mp4" (an external .mp4 URL also works).
   projectVideoUrl: null,
