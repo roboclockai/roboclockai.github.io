@@ -19,7 +19,7 @@ window.ROBOCLOCK_CONFIG = {
   dataUrl: "https://huggingface.co/datasets/Roboclockai/roboclock-assets",      // dataset / simulation assets (e.g. Hugging Face)
   // Demo video under the hero. Put the file at assets/videos/demo/roboclock-demo.mp4 and set
   // projectVideoUrl: "assets/videos/demo/roboclock-demo.mp4" (an external .mp4 URL also works).
-  projectVideoUrl: "assets/videos/demo/roboclock-demo.mp4",
+  projectVideoUrl: "assets/videos/demo/roboclock-demo.mp4?v=202611240940",
   projectVideoPoster: "assets/images/featured/demo-poster.webp",   // optional poster image; defaults to the household hero still
   citation: null,
 };
