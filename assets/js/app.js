@@ -250,7 +250,8 @@
       tr.append(model);
       groups.forEach(g=>metrics.forEach((m,i)=>{
         const key=g+'.'+m;const v=row.scores[g][m];
-        const cell=el('td','score-cell',scoreText(v));cell.dataset.metric=key;
+        const cell=el('td','score-cell',m==='ps'&&v==null?'':scoreText(v));cell.dataset.metric=key;
+        if(m==='ps')cell.classList.add('ps-cell');
         if(i===0)cell.classList.add('group-start');
         if(g==='Overall')cell.classList.add('overall-cell');
         if(v!=null&&v>0&&v===best[key])cell.classList.add('best-score');
@@ -258,6 +259,10 @@
         tr.append(cell);
       }));host.append(tr);
     });
+    const noPs=rows.length>0&&rows.every(r=>r.scores.Overall.ps==null);
+    $('.main-board').classList.toggle('hide-ps',noPs);
+    $$('.main-board th.lb-group').forEach(th=>{th.colSpan=noPs?3:4;});
+    if(noPs&&boardState.sort.endsWith('.ps')){boardState.sort='Overall.ltsr';return renderLeaderboard();}
     $('#leaderboard-count').textContent=rows.length+(rows.length===1?' configuration':' configurations');
     $('#leaderboard-empty').hidden=rows.length!==0;
     $$('[data-comparison]').forEach(button=>{const active=button.dataset.comparison===boardState.comparison;button.classList.toggle('active',active);button.setAttribute('aria-pressed',String(active));});

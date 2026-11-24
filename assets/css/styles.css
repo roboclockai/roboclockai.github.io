@@ -208,3 +208,6 @@
 .main-board td.selected-score{color:var(--accent);font-weight:700;background:#fff1e8}
 .main-board th.leaderboard-model{min-width:200px}
 .main-board .ft-mark{font-weight:500;font-style:italic;color:var(--accent);font-size:12px}
+.main-board.hide-ps .ps-cell{display:none}
+.main-board.hide-ps td[data-metric$=".psr"],.main-board.hide-ps th[data-score-heading$=".psr"]{border-left:1px solid #edf0f4}
+.main-board.hide-ps{min-width:1060px}
