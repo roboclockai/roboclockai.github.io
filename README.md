@@ -34,6 +34,8 @@ On a remote code-server, in-editor preview extensions that iframe `http://127.0.
     │   └── real-robot/            # Real-robot scene photos, head-camera views, B1 frames, real-vs-sim plot
     └── videos/
         ├── <domain>/<code>/demo.mp4   # Final head/wrist-camera composite recording
+        ├── <domain>/<code>/preview.mp4 # 10 s head-camera autoplay clip (tools/make_previews.py)
+        ├── demo/                      # Demo video slot (see projectVideoUrl in site-config.js)
         └── real-robot/b1/<model>.mp4  # Real-robot B1 head-camera recordings, one per model
 ```
 
@@ -61,6 +63,9 @@ All HTML/JavaScript media paths are relative to `index.html`, including paths de
 - The supplied official logo and confirmed author list are retained. Paper/code/project-introduction/citation links remain hidden until public resources are confirmed. No private collection paths, HDF5 files or internal development logs are included here.
 
 - **Real Robot** follows the manuscript appendix "Real-Robot Pilot": xArm 6 hardware and interface, six tasks (A1–C2) with scene photos and first head-camera images, the operator step rubric, the 6 models × 6 tasks PS/PSR/LTSR table (10 episodes each, 360 in total), the real-vs-simulation rank comparison (Spearman ρ 1.00 / 0.93 / 0.85) and the B1 case study. The six B1 videos are the unedited 10 fps head-camera recordings of the case-study episodes, one per model.
+
+- **Autoplay clips**: the gallery, the three category cards and the task cards play `preview.mp4` (muted, looping, loaded only while on screen; still images are used under reduced motion). Regenerate them with `python3 tools/make_previews.py --ffmpeg <path>` after replacing a `demo.mp4`.
+- **Paper** links to `roboclock.pdf` in the repository root (`paperUrl` in `assets/js/site-config.js`); replace that file to update the paper.
 
 ## GitHub Pages
 

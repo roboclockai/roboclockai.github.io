@@ -19,6 +19,29 @@
   };
   const domainName = (id) => data.domains.find((d) => d.id === id)?.name || id;
 
+  // Autoplay clips: muted, looping head-camera previews that load and play only while on screen.
+  const reducedMotionClips = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const clipObserver = 'IntersectionObserver' in window ? new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      const v = entry.target;
+      if (entry.isIntersecting) { if (!v.src && v.dataset.src) v.src = v.dataset.src; const p = v.play && v.play(); if (p && p.catch) p.catch(() => {}); }
+      else if (v.pause) v.pause();
+    });
+  }, { rootMargin: '120px' }) : null;
+  const watchClip = (video) => { if (clipObserver && !reducedMotionClips) clipObserver.observe(video); };
+  const previewOf = (task) => task.video ? task.video.replace(/demo\.mp4$/, 'preview.mp4') : null;
+  const clip = (task, className, label) => {
+    const src = previewOf(task);
+    if (!src || !clipObserver || reducedMotionClips) {
+      const image = el('img', className); image.src = task.thumbnail; image.alt = label; image.width = 600; image.height = 400; image.loading = 'lazy'; image.decoding = 'async';
+      return image;
+    }
+    const video = el('video', className); video.muted = true; video.loop = true; video.playsInline = true; video.preload = 'none';
+    video.setAttribute('muted', ''); video.setAttribute('playsinline', ''); video.tabIndex = -1;
+    video.poster = task.thumbnail; video.dataset.src = src; video.width = 600; video.height = 400; video.setAttribute('aria-label', label);
+    watchClip(video); return video;
+  };
+  document.querySelectorAll('video.autoplay-clip').forEach(watchClip);
   // The gallery uses one thumbnail per actual task, not repeated frames labeled as different tasks.
   const gallery = $('#gallery');
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -34,8 +57,7 @@
         const card=el('button','gallery-card'); card.type='button'; card.dataset.galleryTask=id;
         card.setAttribute('aria-label',`${domainName(task.domain)} ${task.code}: ${task.name}. View task details.`);
         if(copy) card.tabIndex=-1;
-        const image=el('img'); image.src=task.thumbnail; image.alt=`${task.name}, ${domainName(task.domain)}`;
-        image.width=600;image.height=400;image.decoding='async';
+        const image=clip(task,null,`${task.name}, ${domainName(task.domain)}`);
         const caption=el('span','gallery-card-caption');caption.append(el('span',null,domainName(task.domain)),el('strong',null,task.name));
         card.append(image,caption);card.addEventListener('click',()=>openTask(id)); group.append(card);
       });
@@ -206,7 +228,7 @@
       const top = el('div', 'task-card-top'); top.append(el('span', 'task-domain', domainName(task.domain)), el('span', 'task-code', task.code));
       const bottom = el('div', 'task-card-bottom'); bottom.append(el('span', 'category-tag', task.category + ' · ' + categoryNames[task.category]));
       if (task.sequence || task.video) bottom.append(el('span', 'has-demo', task.video ? 'Video demo' : 'Frame sequence'));
-      const preview=el('img','task-preview');preview.src=task.thumbnail;preview.alt=task.name;preview.loading='lazy';preview.width=600;preview.height=400;
+      const preview=clip(task,'task-preview',task.name);
       card.append(preview,top, el('h3', null, task.name), el('p', null, task.description), bottom);
       card.addEventListener('click', () => openTask(task.id)); grid.append(card);
     });
@@ -220,6 +242,7 @@
   $('#load-more').addEventListener('click',() => { state.visible+=12; renderTasks(); });
   $('#reset-filters').addEventListener('click',() => { Object.assign(state,{domain:'all',category:'all',search:'',visible:12}); $('#task-search').value=''; renderTasks(); });
   renderTasks();
+  $$('[data-jump-domain]').forEach((b) => b.addEventListener('click',() => { Object.assign(state,{domain:b.dataset.jumpDomain,category:'all',search:'',visible:12}); $('#task-search').value=''; renderTasks(); }));
 
   $$('[data-mode]').forEach((b) => b.addEventListener('click',() => {
     const paused = b.dataset.mode==='paused';

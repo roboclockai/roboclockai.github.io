@@ -15,7 +15,7 @@ window.ROBOCLOCK_CONFIG = {
     { id: "1", name: "University of California, San Diego", url: "https://ucsd.edu" },
     { id: "2", name: "Fremont Union High School District", url: "https://fuhsd.org" },
   ],
-  paperUrl: null,
+  paperUrl: "roboclock.pdf",
   codeUrl: null,
   dataUrl: null,      // dataset / simulation assets (e.g. Hugging Face)
   // Demo video under the hero. Put the file at assets/videos/demo/roboclock-demo.mp4 and set
