@@ -15,6 +15,7 @@ On a remote code-server, in-editor preview extensions that iframe `http://127.0.
 ```text
 .
 ├── index.html                     # Homepage and section layout
+├── tasks.html                     # Task catalog: filters, instruction and full video per task
 ├── README.md                      # This collaboration guide
 ├── .nojekyll                      # Plain static GitHub Pages site
 ├── data/
@@ -23,7 +24,8 @@ On a remote code-server, in-editor preview extensions that iframe `http://127.0.
 └── assets/
     ├── css/styles.css             # Responsive layout and paper-aligned colors
     ├── js/
-    │   ├── app.js                 # Gallery, dialogs, search and leaderboard interactions
+    │   ├── app.js                 # Homepage: gallery, featured scene and leaderboard
+    │   ├── tasks.js               # tasks.html: catalog filters, search and task dialog
     │   ├── real-robot.js          # Real-robot section rendering
     │   └── site-config.js         # Authors, affiliations and future resource links
     ├── branding/                  # Official wordmark and favicon
@@ -66,6 +68,8 @@ All HTML/JavaScript media paths are relative to `index.html`, including paths de
 
 - **Autoplay clips**: the gallery, the three category cards and the task cards play `preview.mp4` (muted, looping, loaded only while on screen; still images are used under reduced motion). Regenerate them with `python3 tools/make_previews.py --ffmpeg <path>` after replacing a `demo.mp4`.
 - **Paper** links to `roboclock.pdf` in the repository root (`paperUrl` in `assets/js/site-config.js`); replace that file to update the paper.
+
+- **Two pages**: the homepage shows the gallery only. Gallery clips, the category cards and the domain buttons under the gallery link to `tasks.html` (`?domain=<id>` pre-filters the catalog, `?task=<id>` opens one task with its instruction and full demonstration video).
 
 ## GitHub Pages
 

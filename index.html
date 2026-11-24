@@ -7,12 +7,12 @@
   <meta name="theme-color" content="#E94F19">
   <title>RoboClock · Time-Aware Robotic Intelligence</title>
   <link rel="icon" href="assets/branding/roboclock-icon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/css/styles.css?v=202611240252">
-  <script src="assets/js/site-config.js?v=202611240252" defer></script>
-  <script src="data/content.js?v=202611240252" defer></script>
-  <script src="assets/js/app.js?v=202611240252" defer></script>
-  <script src="data/real-robot.js?v=202611240252" defer></script>
-  <script src="assets/js/real-robot.js?v=202611240252" defer></script>
+  <link rel="stylesheet" href="assets/css/styles.css?v=202611240308">
+  <script src="assets/js/site-config.js?v=202611240308" defer></script>
+  <script src="data/content.js?v=202611240308" defer></script>
+  <script src="assets/js/app.js?v=202611240308" defer></script>
+  <script src="data/real-robot.js?v=202611240308" defer></script>
+  <script src="assets/js/real-robot.js?v=202611240308" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -20,7 +20,7 @@
     <nav class="nav wrap" aria-label="Main navigation">
       <a href="#" class="brand" aria-label="RoboClock home"><img class="brand-wordmark" src="assets/branding/roboclock-logo.svg" alt="RoboClock" width="170" height="35"></a>
       <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Open navigation"><span></span><span></span></button>
-      <div id="nav-links" class="nav-links"><a href="#gallery">Gallery</a><a href="#insights">Insights</a><a href="#tasks">Tasks</a><a href="#leaderboard">Leaderboard</a><a href="#real-robot">Real Robot</a><a href="#resources">Resources</a></div>
+      <div id="nav-links" class="nav-links"><a href="#gallery">Gallery</a><a href="#insights">Insights</a><a href="tasks.html">Tasks</a><a href="#leaderboard">Leaderboard</a><a href="#real-robot">Real Robot</a><a href="#resources">Resources</a></div>
     </nav>
   </header>
   <main id="main">
@@ -45,7 +45,7 @@
         <div class="gallery-heading"><h2 id="gallery-title">RoboClock Simulation Benchmark</h2><button id="gallery-toggle" class="gallery-toggle" aria-pressed="false">Pause gallery</button></div>
         <div id="gallery-rows" class="gallery-rows"></div>
         <p class="gallery-caption">Time-constrained manipulation across Laboratory, Healthcare, Household, Industry, and Sports &amp; games.</p>
-        <div class="gallery-jump"><p>Select a clip to open its task, or browse instructions and full demonstration videos by domain:</p><div class="gallery-jump-buttons"><a class="jump-pill" href="#tasks" data-jump-domain="all">All tasks <span>60</span></a><a class="jump-pill" href="#tasks" data-jump-domain="laboratory">Laboratory <span>16</span></a><a class="jump-pill" href="#tasks" data-jump-domain="healthcare">Healthcare <span>14</span></a><a class="jump-pill" href="#tasks" data-jump-domain="household">Household <span>10</span></a><a class="jump-pill" href="#tasks" data-jump-domain="sports">Sports &amp; games <span>10</span></a><a class="jump-pill" href="#tasks" data-jump-domain="industry">Industry <span>10</span></a></div></div>
+        <div class="gallery-jump"><p>Select a clip to open its task page, or browse the instructions and full demonstration videos by domain:</p><div class="gallery-jump-buttons"><a class="jump-pill" href="tasks.html">All tasks <span>60</span></a><a class="jump-pill" href="tasks.html?domain=laboratory">Laboratory <span>16</span></a><a class="jump-pill" href="tasks.html?domain=healthcare">Healthcare <span>14</span></a><a class="jump-pill" href="tasks.html?domain=household">Household <span>10</span></a><a class="jump-pill" href="tasks.html?domain=sports">Sports &amp; games <span>10</span></a><a class="jump-pill" href="tasks.html?domain=industry">Industry <span>10</span></a></div></div>
       </div>
       <div class="spotlight-toggle"><button id="spotlight-toggle" class="button secondary" aria-expanded="false" aria-controls="featured-scene">Watch a featured task</button></div>
       <div id="featured-scene" hidden>
@@ -85,14 +85,6 @@
       </div></div>
     </section>
 
-    <section id="tasks" class="section wrap task-section">
-      <div class="section-heading horizontal"><div><p class="eyebrow">EXPLORE THE SUITE</p><h2>Five domains.<br>One test of timing.</h2></div><p>Browse all 60 tasks. Each has a physical goal and a primary temporal obligation.</p></div>
-      <div class="task-toolbar"><div class="domain-filters" role="group" aria-label="Filter tasks by domain"><button class="active" data-domain="all" aria-pressed="true">All domains <span>60</span></button><button data-domain="laboratory" aria-pressed="false">Laboratory <span>16</span></button><button data-domain="healthcare" aria-pressed="false">Healthcare <span>14</span></button><button data-domain="household" aria-pressed="false">Household <span>10</span></button><button data-domain="sports" aria-pressed="false">Sports &amp; games <span>10</span></button><button data-domain="industry" aria-pressed="false">Industry <span>10</span></button></div>
-        <div class="task-filter-row"><div class="category-filters" role="group" aria-label="Filter tasks by temporal category"><button class="active" data-category="all" aria-pressed="true">All types</button><button data-category="A" aria-pressed="false">A · Window</button><button data-category="B" aria-pressed="false">B · Reactive</button><button data-category="C" aria-pressed="false">C · Throughput</button></div><label class="search"><svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m15 15 5 5"/></svg><input id="task-search" type="search" placeholder="Find a task…" aria-label="Search task names and descriptions"></label></div></div>
-      <div class="task-summary"><span id="task-count" role="status" aria-live="polite">60 tasks</span><button id="reset-filters" class="text-button" hidden>Clear filters</button></div>
-      <div id="task-grid" class="task-grid"></div><p id="no-tasks" class="empty-state" hidden>No tasks match your search. Try another keyword or clear the filters.</p>
-      <div class="load-more"><button id="load-more" class="button secondary">Show more tasks</button></div>
-    </section>
 
     <section id="leaderboard" class="section wrap leaderboard-section">
       <div class="section-heading horizontal"><div><p class="eyebrow">THE RESULTS</p><h2>RoboClock Leaderboard</h2></div><p>All reported policy, framework and foundation-agent configurations. Explore success by temporal category and evaluation metric.</p></div>
@@ -158,10 +150,9 @@
       </div>
     </section>
 
-    <section id="resources" class="resources-section"><div class="wrap resources-inner"><div><p class="eyebrow">ROBOCLOCK</p><h2>Build robots that<br>can keep up.</h2><p>A benchmark for studying physical competence, temporal reasoning, and execution latency together.</p></div><div class="resource-actions"><a class="button primary" href="#tasks">Explore all 60 tasks</a><a id="paper-link" class="button secondary" hidden>Read the paper</a><a id="code-link" class="button secondary" hidden>Get the code</a></div></div></section>
+    <section id="resources" class="resources-section"><div class="wrap resources-inner"><div><p class="eyebrow">ROBOCLOCK</p><h2>Build robots that<br>can keep up.</h2><p>A benchmark for studying physical competence, temporal reasoning, and execution latency together.</p></div><div class="resource-actions"><a class="button primary" href="tasks.html">Explore all 60 tasks</a><a id="paper-link" class="button secondary" hidden>Read the paper</a><a id="code-link" class="button secondary" hidden>Get the code</a></div></div></section>
     <section id="citation-section" class="wrap citation-section" hidden><h2>Citation</h2><pre id="citation"></pre><button id="copy-citation" class="button secondary">Copy BibTeX</button><span id="copy-status" role="status"></span></section>
   </main>
   <footer class="footer wrap"><a class="brand" href="#" aria-label="RoboClock home"><img class="brand-wordmark" src="assets/branding/roboclock-logo.svg" alt="RoboClock" width="150" height="31"></a><p>A Unified Benchmark for Time-Aware Robotic Intelligence</p><a href="#main">Back to top</a></footer>
-  <dialog id="task-dialog" aria-labelledby="dialog-title"><div class="dialog-content"><button class="dialog-close" aria-label="Close task details">×</button><p id="dialog-eyebrow" class="eyebrow"></p><h2 id="dialog-title"></h2><p id="dialog-goal"></p><div id="dialog-media"></div><div class="dialog-constraint"><span id="dialog-category" class="category-tag"></span><p id="dialog-temporal"></p></div></div></dialog>
 </body>
 </html>

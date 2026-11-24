@@ -176,73 +176,9 @@
   });
   setScene('industry');
 
-  const dialog = $('#task-dialog');
-  function openTask(id) {
-    const task = data.tasks.find((t) => t.id === id); if (!task) return;
-    $('#dialog-eyebrow').textContent = domainName(task.domain) + ' / ' + task.code + (task.recordingAlias ? ' · Task ' + task.recordingAlias : '');
-    $('#dialog-title').textContent = task.name; $('#dialog-goal').textContent = task.description;
-    $('#dialog-category').textContent = task.category + ' · ' + categoryNames[task.category];
-    $('#dialog-temporal').textContent = categoryDescriptions[task.category];
-    const host = $('#dialog-media'); host.replaceChildren();
-    if (task.video) {
-      const video = el('video'); video.src = task.video; video.controls = true; video.playsInline = true; video.preload = 'metadata';
-      if (task.thumbnail) video.poster = task.thumbnail;
-      video.setAttribute('aria-label',task.name+' final oracle demonstration');
-      host.append(video);
-      const note=el('p','demo-note',`Final oracle demonstration · ${task.demo.difficulty} · seed ${task.demo.seed}. Head camera above left and right wrist views.`);
-      host.append(note);
-      const instruction=el('details','task-instruction');
-      instruction.append(el('summary',null,'Read the full task instruction'),el('p',null,task.instruction));
-      host.append(instruction);
-    }
-    if (task.sequence) {
-      const sequence = el('div', 'sequence-grid');
-      task.sequence.forEach((src, i) => {
-        const figure=el('figure');const img=el('img');img.src=src;img.alt=task.name+', chronological head-camera frame '+(i+1);
-        figure.append(img,el('figcaption',null,task.sequenceTimes[i].toFixed(2)+' s'));sequence.append(figure);
-      });
-      host.append(sequence, el('p', 'sequence-note', 'Head-camera frames from this final recording, in playback order.'));
-    } else if(task.thumbnail) {
-      const image=el('img','task-scene');image.src=task.thumbnail;image.alt=task.name;
-      host.append(image);
-    }
-    dialog.showModal();
-  }
+  // Task details live on tasks.html; the homepage only links there.
+  const openTask = (id) => { location.href = 'tasks.html?task=' + encodeURIComponent(id); };
   $$('.text-button[data-task]').forEach((b) => b.addEventListener('click', () => openTask(b.dataset.task)));
-  $('.dialog-close').addEventListener('click', () => dialog.close());
-  dialog.addEventListener('click', (e) => { if (e.target === dialog) { const r = dialog.getBoundingClientRect(); if (e.clientX<r.left || e.clientX>r.right || e.clientY<r.top || e.clientY>r.bottom) dialog.close(); } });
-  dialog.addEventListener('close', () => { dialog.querySelector('video')?.pause(); });
-
-  const state = { domain: 'all', category: 'all', search: '', visible: 12 };
-  const featuredIds = ['household-A2','laboratory-A5','industry-B2','healthcare-A2','laboratory-C2','sports-C3'];
-  const taskOrder = featuredIds.map((id) => data.tasks.find((t) => t.id===id));
-  const grouped = data.domains.map((d) => data.tasks.filter((t) => t.domain===d.id && !featuredIds.includes(t.id)));
-  for (let i=0; i<Math.max(...grouped.map((g)=>g.length)); i++) grouped.forEach((g)=>{if(g[i])taskOrder.push(g[i]);});
-  function renderTasks() {
-    const search = state.search.trim().toLowerCase();
-    const filtered = taskOrder.filter((task) => (state.domain==='all' || task.domain===state.domain) && (state.category==='all' || task.category===state.category) && (!search || [task.name, task.description, task.instruction, task.code, task.recordingAlias || '', domainName(task.domain)].join(' ').toLowerCase().includes(search)));
-    const grid = $('#task-grid'); grid.replaceChildren();
-    filtered.slice(0, state.visible).forEach((task) => {
-      const card = el('button', 'task-card'); card.type = 'button'; card.dataset.cat = task.category; card.dataset.task = task.id;
-      card.setAttribute('aria-label', domainName(task.domain) + ' ' + task.code + ': ' + task.name + '. View task details.');
-      const top = el('div', 'task-card-top'); top.append(el('span', 'task-domain', domainName(task.domain)), el('span', 'task-code', task.code));
-      const bottom = el('div', 'task-card-bottom'); bottom.append(el('span', 'category-tag', task.category + ' · ' + categoryNames[task.category]));
-      if (task.sequence || task.video) bottom.append(el('span', 'has-demo', task.video ? 'Video demo' : 'Frame sequence'));
-      const preview=clip(task,'task-preview',task.name);
-      card.append(preview,top, el('h3', null, task.name), el('p', null, task.description), bottom);
-      card.addEventListener('click', () => openTask(task.id)); grid.append(card);
-    });
-    $('#task-count').textContent = filtered.length + (filtered.length===1 ? ' task' : ' tasks') + (filtered.length>state.visible ? ' · showing ' + state.visible : '');
-    $('#no-tasks').hidden = filtered.length!==0; $('#load-more').hidden = filtered.length<=state.visible;
-    $('#reset-filters').hidden = state.domain==='all' && state.category==='all' && !state.search;
-    for (const field of ['domain','category']) $$('[data-'+field+']').forEach((b) => { const active = b.dataset[field]===state[field]; b.classList.toggle('active',active); b.setAttribute('aria-pressed',String(active)); });
-  }
-  for (const field of ['domain','category']) $$('[data-'+field+']').forEach((b) => b.addEventListener('click',() => { state[field]=b.dataset[field]; state.visible=12; renderTasks(); }));
-  $('#task-search').addEventListener('input',(e) => { state.search=e.target.value; state.visible=12; renderTasks(); });
-  $('#load-more').addEventListener('click',() => { state.visible+=12; renderTasks(); });
-  $('#reset-filters').addEventListener('click',() => { Object.assign(state,{domain:'all',category:'all',search:'',visible:12}); $('#task-search').value=''; renderTasks(); });
-  renderTasks();
-  $$('[data-jump-domain]').forEach((b) => b.addEventListener('click',() => { Object.assign(state,{domain:b.dataset.jumpDomain,category:'all',search:'',visible:12}); $('#task-search').value=''; renderTasks(); }));
 
   $$('[data-mode]').forEach((b) => b.addEventListener('click',() => {
     const paused = b.dataset.mode==='paused';
@@ -319,7 +255,7 @@
     'insight-seen-tsr':transfer.scores.Seen.tsr,'insight-unseen-tsr':transfer.scores.Unseen.tsr,
   };
   Object.entries(insightScores).forEach(([id,value])=>$('#'+id).textContent=value.toFixed(1)+'%');
-  const observed = $$('#gallery,#insights,#benchmark,#tasks,#leaderboard,#real-robot,#resources');
+  const observed = $$('#gallery,#insights,#benchmark,#leaderboard,#real-robot,#resources');
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries) => {
       for (const entry of entries) if (entry.isIntersecting) $$('#nav-links a').forEach((a) => a.classList.toggle('current',a.hash==='#'+entry.target.id));

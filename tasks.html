@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="All 60 RoboClock tasks: instruction, temporal constraint and full demonstration video for each task.">
+  <meta name="theme-color" content="#E94F19">
+  <title>Tasks · RoboClock</title>
+  <link rel="icon" href="assets/branding/roboclock-icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/styles.css?v=202611240308">
+  <script src="data/content.js?v=202611240308" defer></script>
+  <script src="assets/js/tasks.js?v=202611240308" defer></script>
+</head>
+<body class="tasks-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="header">
+    <nav class="nav wrap" aria-label="Main navigation">
+      <a href="index.html" class="brand" aria-label="RoboClock home"><img class="brand-wordmark" src="assets/branding/roboclock-logo.svg" alt="RoboClock" width="170" height="35"></a>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Open navigation"><span></span><span></span></button>
+      <div id="nav-links" class="nav-links"><a href="index.html#gallery">Gallery</a><a href="index.html#insights">Insights</a><a href="tasks.html" class="current">Tasks</a><a href="index.html#leaderboard">Leaderboard</a><a href="index.html#real-robot">Real Robot</a><a href="index.html#resources">Resources</a></div>
+    </nav>
+  </header>
+  <main id="main">
+    <p class="wrap back-home"><a class="text-button" href="index.html#gallery">← Back to the gallery</a></p>
+    <section id="tasks" class="section wrap task-section">
+      <div class="section-heading horizontal"><div><p class="eyebrow">EXPLORE THE SUITE</p><h2>Five domains.<br>One test of timing.</h2></div><p>Browse all 60 tasks. Select a task for its full instruction, temporal constraint and demonstration video.</p></div>
+      <div class="task-toolbar"><div class="domain-filters" role="group" aria-label="Filter tasks by domain"><button class="active" data-domain="all" aria-pressed="true">All domains <span>60</span></button><button data-domain="laboratory" aria-pressed="false">Laboratory <span>16</span></button><button data-domain="healthcare" aria-pressed="false">Healthcare <span>14</span></button><button data-domain="household" aria-pressed="false">Household <span>10</span></button><button data-domain="sports" aria-pressed="false">Sports &amp; games <span>10</span></button><button data-domain="industry" aria-pressed="false">Industry <span>10</span></button></div>
+        <div class="task-filter-row"><div class="category-filters" role="group" aria-label="Filter tasks by temporal category"><button class="active" data-category="all" aria-pressed="true">All types</button><button data-category="A" aria-pressed="false">A · Window</button><button data-category="B" aria-pressed="false">B · Reactive</button><button data-category="C" aria-pressed="false">C · Throughput</button></div><label class="search"><svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m15 15 5 5"/></svg><input id="task-search" type="search" placeholder="Find a task…" aria-label="Search task names and descriptions"></label></div></div>
+      <div class="task-summary"><span id="task-count" role="status" aria-live="polite">60 tasks</span><button id="reset-filters" class="text-button" hidden>Clear filters</button></div>
+      <div id="task-grid" class="task-grid"></div><p id="no-tasks" class="empty-state" hidden>No tasks match your search. Try another keyword or clear the filters.</p>
+      <div class="load-more"><button id="load-more" class="button secondary">Show more tasks</button></div>
+    </section>
+  </main>
+  <footer class="footer wrap"><a class="brand" href="index.html" aria-label="RoboClock home"><img class="brand-wordmark" src="assets/branding/roboclock-logo.svg" alt="RoboClock" width="150" height="31"></a><p>A Unified Benchmark for Time-Aware Robotic Intelligence</p><a href="#main">Back to top</a></footer>
+  <dialog id="task-dialog" aria-labelledby="dialog-title"><div class="dialog-content"><button class="dialog-close" aria-label="Close task details">×</button><p id="dialog-eyebrow" class="eyebrow"></p><h2 id="dialog-title"></h2><p id="dialog-goal"></p><div id="dialog-media"></div><div class="dialog-constraint"><span id="dialog-category" class="category-tag"></span><p id="dialog-temporal"></p></div></div></dialog>
+</body>
+</html>
