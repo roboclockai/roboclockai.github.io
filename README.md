@@ -8,6 +8,8 @@ Open `index.html` in Chrome or run `python3 -m http.server 8000 --bind 127.0.0.1
 
 In VS Code, install **HTML Preview** by **George Oliveira** (`george-alisson.html-preview-vscode`). Open `index.html`, press Cmd+K, release, then V to preview beside the source. Cmd+K followed by W opens it in a browser. See the [extension guide](https://github.com/george-alisson/html-preview-vscode). Saving a file does not upload it to GitHub.
 
+On a remote code-server, in-editor preview extensions that iframe `http://127.0.0.1:<port>` show a blank page, because the browser resolves 127.0.0.1 to your own computer. Run `python3 -m http.server 8765 --bind 127.0.0.1` in this folder on the server and open `<code-server URL>/proxy/8765/` (with the trailing slash) instead.
+
 ## Directory layout
 
 ```text
