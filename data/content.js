@@ -588,7 +588,7 @@ window.ROBOCLOCK_DATA = {
       "instruction": "The roller clamp on the saline line is CLOSED. Slide it to OPEN so the saline bag drips into the drip chamber, then slide it back to CLOSED while the liquid level is inside the green TARGET band on the chamber: too early leaves it LOW, too late overfills it into the red OVER zone. After opening, the level reaches the band in about 3.5 seconds and stays in it for 4.5 seconds.",
       "demo": {
         "sourceCommit": "20633da0e8e2b3d3e9b98ccca5971a1012008c56",
-        "sourceDomain": "hospital_v2",
+        "sourceDomain": "hospital",
         "taskCode": "A1",
         "difficulty": "medium",
         "seed": 50,
@@ -625,7 +625,7 @@ window.ROBOCLOCK_DATA = {
       "instruction": "Two color-coded 100 mL saline bags, BAG 1 (blue) and BAG 2 (amber), run wide open by gravity into a training line through a selector valve. Once bag 1 is empty its drip chamber runs dry within seconds. Turn the selector's black pointer a quarter turn from the BAG 1 port to the BAG 2 port after bag 1's fluid reaches its green END mark and before its drip chamber runs dry: too early interrupts bag 1, too late lets air into the line. The switch window lasts 5.5 seconds.",
       "demo": {
         "sourceCommit": "20633da0e8e2b3d3e9b98ccca5971a1012008c56",
-        "sourceDomain": "hospital_v2",
+        "sourceDomain": "hospital",
         "taskCode": "A2",
         "difficulty": "medium",
         "seed": 50,
@@ -660,7 +660,7 @@ window.ROBOCLOCK_DATA = {
       "instruction": "An intubated manikin lies on the bed; the resuscitator bag on the trolley is connected to its tracheal tube. Ventilate at 10 breaths per minute, one breath every 6 seconds: the VENT TIMER on the monitor sweeps once per breath and its bar crosses the green band when the breath is due. For each breath press the bag down fully (the chest rises), then let it refill. Too early or an extra squeeze hyperventilates, too late or a missed breath hypoventilates. Deliver 4 breaths; the green band is 2 seconds wide.",
       "demo": {
         "sourceCommit": "20633da0e8e2b3d3e9b98ccca5971a1012008c56",
-        "sourceDomain": "hospital_v2",
+        "sourceDomain": "hospital",
         "taskCode": "A3",
         "difficulty": "medium",
         "seed": 50,
@@ -696,7 +696,7 @@ window.ROBOCLOCK_DATA = {
       "instruction": "START INFUSION: 1 SPIKE + HANG SALINE  2 PRESS PUMP START. The uncapped saline bag waits in its cradle on the prep cart; you start at rest. After the green request, 1) lower the bag's trainer port fully over the IV pole's spike and leave its eyelet released on the hook, then 2) press START on the infusion pump below it, completing both within 10.5 seconds. START before the bag hangs is a wrong-order failure. This rigid trainer models insertion, hanging and one key press, not membrane puncture, fluid flow or an infusion rate.",
       "demo": {
         "sourceCommit": "20633da0e8e2b3d3e9b98ccca5971a1012008c56",
-        "sourceDomain": "hospital_v2",
+        "sourceDomain": "hospital",
         "taskCode": "A4",
         "difficulty": "medium",
         "seed": 50,
@@ -732,7 +732,7 @@ window.ROBOCLOCK_DATA = {
       "instruction": "The patient is on oxygen; the bedside monitor shows SpO2. When SpO2 falls below 90 % (red number, LOW SpO2 alarm), raise the oxygen: pinch the flowmeter's control knob and turn it counterclockwise until the ball float is inside the green band on the tube (6-8 L/min; the order is 7) and keep it there for 0.5 s, within 6.44 s of the alarm. Do not turn the knob before the alarm, do not open it more than 3 L/min past the band and do not turn it down.",
       "demo": {
         "sourceCommit": "20633da0e8e2b3d3e9b98ccca5971a1012008c56",
-        "sourceDomain": "hospital_v2",
+        "sourceDomain": "hospital",
         "taskCode": "B1",
         "difficulty": "medium",
         "seed": 50,
@@ -768,7 +768,7 @@ window.ROBOCLOCK_DATA = {
       "instruction": "A patient has collapsed. When the alarm sounds, pull the AED's green tab to free the pads, put pad 1 and pad 2 on their marks on the patient's chest, and press the orange SHOCK button when the unit is ready. Deliver the shock within 45.6 seconds of the alarm.",
       "demo": {
         "sourceCommit": "20633da0e8e2b3d3e9b98ccca5971a1012008c56",
-        "sourceDomain": "hospital_v2",
+        "sourceDomain": "hospital",
         "taskCode": "B2",
         "difficulty": "medium",
         "seed": 50,
@@ -804,7 +804,7 @@ window.ROBOCLOCK_DATA = {
       "instruction": "A glass bottle of a hazardous (cytotoxic) drug falls off the rack and shatters on the counter. First lay the absorbent towel pad from the spill kit on the spreading liquid, before the CONTAIN dial runs out and the puddle reaches its full size; then pick up both glass pieces and drop them into the yellow cytotoxic sharps bin. Contain the liquid within 12.3 seconds and finish within 30.9 seconds of the break. Touch nothing before the bottle breaks.",
       "demo": {
         "sourceCommit": "20633da0e8e2b3d3e9b98ccca5971a1012008c56",
-        "sourceDomain": "hospital_v2",
+        "sourceDomain": "hospital",
         "taskCode": "B3",
         "difficulty": "medium",
         "seed": 50,
@@ -840,7 +840,7 @@ window.ROBOCLOCK_DATA = {
       "instruction": "ICU bedside: a training manikin is ventilated through a tracheostomy tube. If the breathing circuit comes off (its blue elbow ends up on the towel on the chest, the chest stops moving, the ventilator display turns red: DISCONNECT), pick the elbow up, push its socket straight down over the white 15 mm connector at the neck until seated, and let go. The circuit must be back on, released and at rest within 6.7 seconds of the disconnection. Do not touch the circuit before it comes off.",
       "demo": {
         "sourceCommit": "20633da0e8e2b3d3e9b98ccca5971a1012008c56",
-        "sourceDomain": "hospital_v2",
+        "sourceDomain": "hospital",
         "taskCode": "B4",
         "difficulty": "medium",
         "seed": 50,
@@ -884,7 +884,7 @@ window.ROBOCLOCK_DATA = {
       "instruction": "The patient on an IV infusion may develop anaphylaxis: the monitor then alarms (red LOW BP) and hives appear on the arm. Then take the adrenaline auto-injector from its holder, press its orange tip straight down on the blue injection pad on the patient's outer thigh until the tip is pushed in, and hold it there for 3 s; the hold must end within 16.8 s of the alarm. Do not touch the injector before the alarm, press its tip nowhere else, and do not lift it early.",
       "demo": {
         "sourceCommit": "20633da0e8e2b3d3e9b98ccca5971a1012008c56",
-        "sourceDomain": "hospital_v2",
+        "sourceDomain": "hospital",
         "taskCode": "B5",
         "difficulty": "medium",
         "seed": 50,
@@ -912,7 +912,7 @@ window.ROBOCLOCK_DATA = {
       "instruction": "Trauma bay: a bleeding-control manikin has a windlass tourniquet strapped on its thigh, not yet tightened. When the thigh wound bleeds (blood pools on the pad, the display turns red: MASSIVE BLEEDING), pinch the windlass rod, turn it counterclockwise (seen from above) half a turn until its red tip is in the retaining clip, and let go, within 11.2 s of the start of the bleeding. Do not touch the rod before the bleeding, let go of it before the clip (it unwinds) or force it past the clip.",
       "demo": {
         "sourceCommit": "20633da0e8e2b3d3e9b98ccca5971a1012008c56",
-        "sourceDomain": "hospital_v2",
+        "sourceDomain": "hospital",
         "taskCode": "B6",
         "difficulty": "medium",
         "seed": 50,
@@ -948,7 +948,7 @@ window.ROBOCLOCK_DATA = {
       "instruction": "Pick-to-light style order picking at a pharmacy pick face, counted per order line (one vial is one line). Each bin's RX card lists the colored vials its order needs. Pick the right vials from the medication shelf and put each into the bin whose order needs it. Fill all 8 ordered vials as quickly as possible. Leave the spare vials on the shelf and put no vial in a bin whose order does not need it.",
       "demo": {
         "sourceCommit": "20633da0e8e2b3d3e9b98ccca5971a1012008c56",
-        "sourceDomain": "hospital_v2",
+        "sourceDomain": "hospital",
         "taskCode": "C1",
         "difficulty": "medium",
         "seed": 50,
@@ -984,7 +984,7 @@ window.ROBOCLOCK_DATA = {
       "instruction": "OR turnover for two back-to-back cases: take the loose stainless instruments out of the sterilization basin and lay each one flat in a silicone slot of its own type (SCALPEL, HEMOSTAT or FORCEPS, matching the colored tape) on the CASE 1 or CASE 2 Mayo tray. Sort all 6 instruments as quickly as possible.",
       "demo": {
         "sourceCommit": "20633da0e8e2b3d3e9b98ccca5971a1012008c56",
-        "sourceDomain": "hospital_v2",
+        "sourceDomain": "hospital",
         "taskCode": "C2",
         "difficulty": "medium",
         "seed": 50,
@@ -1021,7 +1021,7 @@ window.ROBOCLOCK_DATA = {
       "instruction": "A Code Blue just ended and the crash cart's medication drawer is depleted. Using both arms, move each color-capped vial (EPI red, ATRO green, AMIO blue) from the supply trays on the cart top and stand it upright in a pocket of the drawer-insert lane labeled with the same drug. Stock all 12 vials as quickly as possible.",
       "demo": {
         "sourceCommit": "20633da0e8e2b3d3e9b98ccca5971a1012008c56",
-        "sourceDomain": "hospital_v2",
+        "sourceDomain": "hospital",
         "taskCode": "C3",
         "difficulty": "medium",
         "seed": 50,
@@ -1056,7 +1056,7 @@ window.ROBOCLOCK_DATA = {
       "instruction": "Mass-casualty surge at the ward specimen station: take each stoppered blood tube from the arrival trays and stand it upright in a well of the analyzer rack matching its stopper color (purple = HEMATOLOGY, blue = COAG, red = CHEMISTRY). Rack all 12 tubes as quickly as possible.",
       "demo": {
         "sourceCommit": "20633da0e8e2b3d3e9b98ccca5971a1012008c56",
-        "sourceDomain": "hospital_v2",
+        "sourceDomain": "hospital",
         "taskCode": "C4",
         "difficulty": "medium",
         "seed": 50,
