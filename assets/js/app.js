@@ -184,7 +184,7 @@
     const paused = b.dataset.mode==='paused';
     $$('[data-mode]').forEach((other) => { const active = other===b; other.classList.toggle('active',active); other.setAttribute('aria-pressed',String(active)); });
     $('#world-delay').classList.toggle('paused',paused);
-    $('#world-delay span').textContent = paused ? 'No time charged' : 'Time advances';
+    $('#world-delay span').textContent = paused ? 'No time charged' : 'Environment time advances';
     $('#protocol-description').textContent = paused ? 'Inference time is not charged to the environment clock. The agent can finish thinking before the simulated world advances.' : 'During the charged inference delay, previously committed controls remain in effect. The next action is based on an observation that is already older.';
   }));
   // The leaderboard preserves every reported row and missing metric.
@@ -245,17 +245,38 @@
     ['Seen','Unseen'].forEach(scope=>['psr','tsr','ltsr'].forEach(metric=>tr.append(el('td','score-cell',scoreText(row.scores[scope][metric])))));
     $('#transfer-body').append(tr);
   });
-  // Insight 1 follows the VLM agent with the highest inference-paused TSR (Gemini 4 Argon in the current manuscript).
-  const astra=board.rows.filter(row=>row.comparison==='vlm').reduce((a,b)=>b.scores.Overall.tsr>a.scores.Overall.tsr?b:a);
-  const policy=board.rows.find(row=>row.model==='π₀.₅'&&row.fineTuned);
+  // Findings: headline number, paradigm cards and the PSR / TSR / LTSR comparison, all read from the leaderboard data.
+  const pct=(v)=>v.toFixed(1)+'%';
+  const findRow=(model,fineTuned)=>board.rows.find(row=>row.model===model&&row.fineTuned===fineTuned);
+  const bestVlm=board.rows.filter(row=>row.comparison==='vlm').reduce((x,y)=>y.scores.Overall.tsr>x.scores.Overall.tsr?y:x);
+  const wam=findRow('OpenWAM-α',true);
   const transfer=board.seenUnseenRows.find(row=>row.model==='X-VLA'&&row.fineTuned);
+  const headline=Math.max(...board.rows.map(row=>row.scores.Overall.ltsr));
   const insightScores={
-    'insight-astra-tsr':astra.scores.Overall.tsr,'insight-astra-ltsr':astra.scores.Overall.ltsr,
-    'insight-policy-ltsr':policy.scores.Overall.ltsr,'insight-agent-ltsr':Math.max(...board.rows.filter(row=>row.comparison==='vlm').map(row=>row.scores.Overall.ltsr)),
+    'headline-ltsr':headline,'headline-ltsr-inline':headline,
     'insight-seen-tsr':transfer.scores.Seen.tsr,'insight-unseen-tsr':transfer.scores.Unseen.tsr,
+    'insight-wam-tsr':wam.scores.Overall.tsr,'insight-wam-ltsr':wam.scores.Overall.ltsr,'insight-wam-psr':wam.scores.Overall.psr,
+    'insight-vlm-tsr':bestVlm.scores.Overall.tsr,'insight-vlm-ltsr':bestVlm.scores.Overall.ltsr,
   };
-  Object.entries(insightScores).forEach(([id,value])=>$('#'+id).textContent=value.toFixed(1)+'%');
-  const observed = $$('#gallery,#insights,#benchmark,#leaderboard,#real-robot,#resources');
+  Object.entries(insightScores).forEach(([id,value])=>{$('#'+id).textContent=pct(value);});
+  const chartRows=[['π₀.₅',true,'VLA · fine-tuned'],['InternW0-Δ',true,'WAM · fine-tuned'],['GPT-6 Astra',false,'VLM agent · zero-shot'],['Gemini 4 Argon',false,'VLM agent · zero-shot']];
+  const chartMetrics=[['psr','PSR'],['tsr','TSR'],['ltsr','LTSR']];
+  const chartMax=30;
+  chartRows.forEach(([model,fineTuned,kind])=>{
+    const row=findRow(model,fineTuned);if(!row)return;
+    const item=el('div','pst-row');item.setAttribute('role','listitem');
+    item.setAttribute('aria-label',model+', '+kind+': '+chartMetrics.map(([key,name])=>name+' '+pct(row.scores.Overall[key])).join(', '));
+    const label=el('div','pst-label');label.append(el('strong',null,model),el('span',null,kind));
+    const bars=el('div','pst-bars');
+    chartMetrics.forEach(([key,name])=>{
+      const value=row.scores.Overall[key];
+      const line=el('div','pst-bar-line');line.title=model+' · '+name+' '+pct(value);
+      const bar=el('i','pst-bar '+key);bar.style.width=(value/chartMax*100)+'%';
+      line.append(bar,el('span','pst-value',pct(value)),el('span','pst-metric',name));bars.append(line);
+    });
+    item.append(label,bars);$('#pst-chart').append(item);
+  });
+  const observed = $$('#gallery,#benchmark,#evaluation,#insights,#leaderboard,#real-robot,#resources');
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries) => {
       for (const entry of entries) if (entry.isIntersecting) $$('#nav-links a').forEach((a) => a.classList.toggle('current',a.hash==='#'+entry.target.id));
