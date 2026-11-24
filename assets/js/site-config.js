@@ -17,6 +17,7 @@ window.ROBOCLOCK_CONFIG = {
   ],
   paperUrl: null,
   codeUrl: null,
+  dataUrl: null,      // dataset / simulation assets (e.g. Hugging Face)
   projectVideoUrl: null,
   citation: null,
 };

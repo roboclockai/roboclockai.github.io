@@ -185,3 +185,12 @@
 .b1-frames figcaption{font-size:12px;color:var(--muted);margin-top:6px}
 @media(max-width:1050px){.real-setup{grid-template-columns:repeat(2,1fr)}.real-task-grid{grid-template-columns:repeat(2,1fr)}.real-compare{grid-template-columns:1fr}.b1-case-head,.b1-case-body{grid-template-columns:1fr;gap:18px}}
 @media(max-width:760px){.real-stats{padding-bottom:28px}.real-stats span{font-size:10px}.real-setup,.real-task-grid,.real-findings{grid-template-columns:1fr}.real-subtitle{font-size:23px;margin-top:44px}.real-compare{margin-top:44px;padding:20px 16px}.real-compare h3,.b1-case h3{font-size:22px}.b1-case-head{padding:20px 16px 16px}.b1-case-body{padding:16px}.b1-frames{grid-template-columns:repeat(2,1fr);padding:0 16px 20px}.real-task-body h3{font-size:18px}}
+/* Hero resource links (RoboDojo-style pills) */
+.hero-links{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:26px}
+.link-pill{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 18px;border-radius:999px;background:var(--ink);color:white;font-size:14px;font-weight:600;transition:background .18s,transform .18s}
+.link-pill:hover{background:var(--accent);transform:translateY(-1px)}
+.link-pill svg{flex-shrink:0}
+.link-pill.pending{background:#eef0f4;color:#8a93a3;cursor:default}
+.link-pill.pending:hover{background:#eef0f4;transform:none}
+.link-pill small{font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;background:white;color:#8a93a3;border-radius:999px;padding:1px 7px}
+@media(max-width:760px){.hero-links{gap:7px;margin-top:22px}.link-pill{height:36px;padding:0 13px;font-size:12px;gap:6px}.link-pill svg{width:15px;height:15px}}

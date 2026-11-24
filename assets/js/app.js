@@ -76,6 +76,12 @@
     });
     container.append(affiliations); container.hidden = false;
   }
+  // Hero resource pills: show 'Soon' until a URL is configured in site-config.js.
+  for (const [id, url] of [['hero-paper', config.paperUrl], ['hero-code', config.codeUrl], ['hero-data', config.dataUrl]]) {
+    const pill = $('#' + id); if (!pill || !url) continue;
+    pill.href = url; pill.target = '_blank'; pill.rel = 'noopener';
+    pill.classList.remove('pending'); pill.removeAttribute('aria-disabled'); pill.removeAttribute('title'); pill.querySelector('small')?.remove();
+  }
   for (const [id, url] of [['paper-link', config.paperUrl], ['code-link', config.codeUrl]]) {
     if (url) { const link = $('#' + id); link.href = url; link.target = '_blank'; link.rel = 'noopener noreferrer'; link.hidden = false; }
   }
