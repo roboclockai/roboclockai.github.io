@@ -20,6 +20,6 @@ window.ROBOCLOCK_CONFIG = {
   // Demo video under the hero. Put the file at assets/videos/demo/roboclock-demo.mp4 and set
   // projectVideoUrl: "assets/videos/demo/roboclock-demo.mp4" (an external .mp4 URL also works).
   projectVideoUrl: "assets/videos/demo/roboclock-demo.mp4?v=202611240940",
-  projectVideoPoster: "assets/images/featured/demo-poster.webp",   // optional poster image; defaults to the household hero still
+  projectVideoPoster: "assets/images/featured/demo-poster.webp?v=202611241000",   // optional poster image; defaults to the household hero still
   citation: null,
 };
