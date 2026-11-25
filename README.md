@@ -67,7 +67,7 @@ All HTML/JavaScript media paths are relative to `index.html`, including paths de
 - **Real Robot** follows the manuscript appendix "Real-Robot Pilot": xArm 6 hardware and interface, six tasks (A1–C2) with scene photos and first head-camera images, the operator step rubric, the 6 models × 6 tasks PS/PSR/LTSR table (10 episodes each, 360 in total), the real-vs-simulation rank comparison (Spearman ρ 1.00 / 0.93 / 0.85) and the B1 case study. The six B1 videos are the unedited 10 fps head-camera recordings of the case-study episodes, one per model.
 
 - **Autoplay clips**: the gallery, the three category cards and the task cards play `preview.mp4` (muted, looping, loaded only while on screen; still images are used under reduced motion). Regenerate them with `python3 tools/make_previews.py --ffmpeg <path>` after replacing a `demo.mp4`.
-- **Paper** links to `roboclock.pdf` in the repository root (`paperUrl` in `assets/js/site-config.js`); replace that file to update the paper.
+- **Paper** links to the arXiv page https://arxiv.org/abs/2611.32233 (`paperUrl` in `assets/js/site-config.js`).
 
 - **Two pages**: the homepage shows the gallery only. Gallery clips, the category cards and the domain buttons under the gallery link to `tasks.html` (`?domain=<id>` pre-filters the catalog, `?task=<id>` opens one task with its instruction and full demonstration video).
 

@@ -14,7 +14,7 @@ window.ROBOCLOCK_CONFIG = {
   affiliations: [
     { name: "University of California, San Diego", url: "https://ucsd.edu" },
   ],
-  paperUrl: "roboclock.pdf",
+  paperUrl: "https://arxiv.org/abs/2611.32233",
   codeUrl: "https://github.com/roboclockai/roboclock",
   dataUrl: "https://huggingface.co/datasets/Roboclockai/roboclock-assets",      // dataset / simulation assets (e.g. Hugging Face)
   // Demo video under the hero. Put the file at assets/videos/demo/roboclock-demo.mp4 and set
